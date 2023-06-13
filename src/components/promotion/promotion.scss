@@ -1,0 +1,77 @@
+
+.sale {
+    padding: 80px 0;
+    background: #ffffff url(../../assets/img/sale/bg.jpg) center center no-repeat;
+    &_wrapper {
+        padding-left: 150px;
+        padding-right: 150px;
+        display: grid;
+        grid-template-columns: repeat(2, 500px);
+        grid-template-rows: repeat(3, auto);
+        justify-content: space-between;
+        text-align: start;
+        align-items: center;
+    }
+    &_title {
+        font-size: 48px;
+        font-weight: 700;
+        font-style: normal;
+        text-transform: uppercase;
+        color: #0089cd;
+    }
+    &_subtitle {
+        display: grid;
+        grid-column: 1/2;
+        margin-bottom: 80px;
+        font-size: 24px;
+        line-height: 1.6;
+    }
+    &_form {
+        display: grid;
+        grid-column: 2 / 3;
+        grid-row: 1 / 4;
+        
+    }
+}
+
+.timer1 {
+    padding: 10px;
+    border: 1px solid grey;
+    background-color: white;
+    color: black;
+    border-radius: 10px;
+    text-align: center;
+    width: 360px;
+    height: 150px;
+    h4 {
+        font-weight:normal;
+        font-size: 18px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+}
+
+.container1 {
+  display: inline-block;
+
+}
+.numbers1 {
+  display: block;
+  float: left;  
+  color: white;
+  font-size: 40px;
+  margin-right: 10px;
+}
+
+.timer1 span{
+  margin-right: 2px;
+  background-color: #575757;
+  border-radius: 7px;
+  padding: 4px;
+}
+.description1{
+    padding-top: 10px;
+    font-size: 18px;
+    text-align: center;
+    color: black;
+}

@@ -1,0 +1,18 @@
+
+.button {
+    width: 260px;
+    padding: 25px 0px;
+    font-size: 17px;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    border: 1px solid #ffc600;
+    border-radius: 10px;
+    background: -webkit-gradient(linear, left top, left bottom, from(#ffed26), to(#ffb400));
+    background: linear-gradient(180deg, #ffed26 0%, #ffb400 100%);
+    -webkit-box-shadow: 1px 2px 20px 0px rgba(255, 153, 0, 0.4);
+    box-shadow: 1px 2px 20px 0px rgba(255, 153, 0, 0.4);
+    &:hover {
+        cursor: pointer;
+    }
+}

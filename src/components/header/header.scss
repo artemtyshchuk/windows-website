@@ -1,0 +1,138 @@
+
+.header {
+	height: 100px;
+	background-color: #ffffff;
+	padding: 0 150px 0 150px;
+	.row {
+		justify-content: space-evenly;
+
+	}
+	.logo {
+		width: 440px;
+	  	height: 100px;
+	  	display: flex;
+	  	align-items: center;
+
+	  &__img {
+		margin-right: 20px;
+		img {
+			display: block;
+			&:hover {
+				cursor: pointer;
+			  }
+		}
+		}
+	  p {
+		line-height: 1.2;
+		font-size: 14px;
+		color: #0089cd;
+	  }
+	}
+  
+	.header_btn {
+	  background: #ffffff url(../../assets/img/header/edit.png) 10px center no-repeat;
+	  padding: 10px 10px 10px 50px;
+	  border: 2px solid #55a831;
+	  border-radius: 10px;
+	  background-color: #ffffff;
+	  text-transform: uppercase;
+	  text-align: left;
+	  font-size: 14px;
+	  line-height: 1.2;
+	  font-family: 'Open Sans', sans-serif;
+	  font-weight: 700;
+	  font-style: normal;
+	  color: #55a831;
+  
+	  &_wrap {
+		display: flex;
+		align-items: center;
+		&_block {
+		  margin-right: 7px;
+  
+		  img {
+			display: block;
+		  }
+		}
+	  }
+  
+	  &:hover {
+		cursor: pointer;
+	  }
+	}
+  
+	.working_hours {
+	  height: 100px;
+	  display: flex;
+	  align-items: center;
+  
+	  &_img {
+		margin-right: 20px;
+  
+		img {
+		  display: block;
+		}
+	  }
+  
+	  p {
+		line-height: 20px;
+		font-size: 14px;
+		color: #333333;
+	  }
+  
+	  span {
+		font-family: 'Open Sans', sans-serif;
+		font-weight: 700;
+		font-style: normal;
+		font-size: 18px;
+	  }
+	}
+  
+	.contact_us {
+		height: 100px;
+		display: flex;
+		align-items: center;
+		
+		&_wrap {
+		  display: flex;
+		  flex-direction: column;
+		  text-align: right;
+		  line-height: 1.7;
+		  
+		  a {
+			display: flex;
+			align-items: center;
+			font-size: 23px;
+			font-family: 'Open Sans', sans-serif;
+			font-weight: 700;
+			font-style: normal;
+			color: #333333;
+		  }
+		  
+		  img {
+			margin-right: 10px;
+		  }
+		  
+			.phone_link {
+				display: flex;
+				justify-content: flex-end;
+				font-size: 15px;
+				font-family: 'Open Sans', sans-serif;
+				font-weight: 400;
+				font-style: normal;
+				color: #0089cd;
+				text-decoration: none;
+		  	}
+		}
+	}
+	  
+  
+	.container {
+	  .row {
+		display: flex;
+		align-items: center;
+	  }
+	}
+}
+  
+  

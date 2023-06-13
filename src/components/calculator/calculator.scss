@@ -1,0 +1,127 @@
+
+
+.popup_calc {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 9;
+	background-color: rgba(0, 0, 0, 0.5);
+	&_content {
+		display: grid;
+		grid-template-columns: 420px;
+		grid-template-rows: repeat(6, auto);
+		
+		position: fixed;
+		top: 2%;
+		left: 50%;
+		-webkit-transform: translateX(-50%);
+		transform: translateX(-50%);
+		width: 440px;
+		padding: 10px 5px 40px;
+		background-color: #ffffff;
+		h2 {
+			display: grid;
+			text-align: center;
+			grid-row: 1/2;
+			margin-bottom: 30px;
+			font-size: 30px;
+			font-family: 'Open Sans', sans-serif;
+			font-weight: 700;
+			font-style: normal;
+			color: #333333;
+		}
+		h3 {
+			text-align: center;
+			grid-row: 2/3;
+			font-size: 20px;
+  			margin-bottom: 30px;
+		}
+		.balcon_icons {
+			justify-content: space-between;
+			grid-row: 3/4;
+			display: grid;
+			grid-template-columns: repeat(4, auto);
+			margin-bottom: 10px;
+			&_img {
+				padding-top: 10px;
+				margin-right: 0;
+				:hover {
+					cursor: pointer;
+				}
+				
+			}
+			.do_image_more {
+					img {
+						width: 110px;
+    					height: 70px;
+					}
+				}
+		}
+		
+		.big_img {
+			display: grid;
+			justify-content: center;
+			grid-row: 4/5;
+			img {
+				// display: none;
+				margin-bottom: 30px;
+				width: 300px;
+			}
+		}
+		&_form {
+			grid-row: 5/6;
+			display: grid;
+			justify-content: space-evenly;
+			text-align: center;
+			&_formControlWidth {
+				grid-column: 2/3;
+				input {
+					padding-left: 10px;
+					display: inline-block;
+					margin-bottom: 30px;
+					width: 100px;
+					height: 34px;
+					margin-right: 3px;
+				}
+			}
+			&_multiplication {
+				display: inline-block;
+				font-size: 20px;
+				color: #323131;
+				margin: 0 10px;
+			}
+			&_formControlHeight {
+				grid-column: 4/5;
+				input {
+					padding-left: 10px;
+					display: inline-block;
+					margin-bottom: 30px;
+					width: 100px;
+					height: 34px;
+					margin-right: 3px;
+				}
+			}
+			label {
+				color: #999;
+			}
+		}
+		&_button {
+			display: grid;
+			justify-content: center;
+			grid-row: 6/7;
+			
+			
+		}
+	}
+	&_close {
+		position: absolute;
+		top: -20.2px;
+		right: -50px;
+		font-size: 40px;
+		color: #ffffff;
+		border: none;
+		background: transparent;
+	}
+}

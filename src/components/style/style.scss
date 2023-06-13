@@ -1,0 +1,58 @@
+// @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;700;800&display=swap');
+@import './button.scss';
+@import './variables.scss';
+@import './form.scss';
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+html {
+    /* overflow-x: hidden; */
+    font-size: 10px;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    display: inline-block;
+    &:hover {
+        text-decoration: none;
+        color: inherit;
+    }
+}
+
+.status {
+    display: block;
+    color: red;
+}
+
+ul {
+    padding: 0;
+}
+
+.section_header {
+    margin-bottom: 80px;
+    text-align: center;
+    text-transform: uppercase;
+    h2 {
+        font-size: 30px;
+        line-height: 1.4;
+        font-family: 'Open Sans', sans-serif;
+        font-weight: 700;
+        font-style: normal;
+        color: #333333;
+    }
+    &_sub {
+        margin-top: 2rem;
+        margin-left: 50%;
+        -webkit-transform: translateX(-50%);
+        transform: translateX(-50%);
+        width: 17rem;
+        height: 0.2rem;
+        background: url(../../assets/img/glazing/line.png) 0 0 no-repeat;
+    }
+}

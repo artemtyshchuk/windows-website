@@ -1,0 +1,143 @@
+.glazing {
+    padding: 0 150px 50px 150px;
+    &_slider {
+        display: grid;
+        grid-template-columns: repeat(5, 200px);
+        justify-content: space-around;
+    }
+    &_block {
+        text-align: center;
+        height: 220px;
+        padding: 20px 0;
+        img {
+            display: block;
+            margin: 0 auto;
+            margin-bottom: 20px;
+        }
+        a {
+            font-size: 18px;
+            font-weight: 600;
+            text-decoration: none;
+            &:focus {
+                text-decoration: none;
+				color: #454545;
+            }
+        }
+        &:hover {
+            cursor: pointer;
+        }
+        &_active {
+            border-bottom: 10px solid #0089cd;
+			height: 220px;
+			padding: 20px 0;
+			// background: -webkit-gradient(linear, left top, left bottom, from(#ebebeb), color-stop(0%, #ebebeb), to(rgba(255, 255, 255, 0)));
+			background: linear-gradient(180deg, #ebebeb 0%, #ebebeb 0%, rgba(255, 255, 255, 0) 20%);
+			text-align: center;
+            img {
+                display: block;
+                margin: 0 auto;
+                margin-bottom: 20px;
+            }
+            a {
+                font-size: 18px;
+                font-weight: 600;
+                text-decoration: none;
+                &:focus {
+                    text-decoration: none;
+                    color: #454545;
+                }
+                &:hover {
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+    &_content {
+        padding-top: 50px;
+        display: grid;
+        grid-template-columns: repeat(2, auto);
+        ul {
+            margin-top: 37px;
+            padding: 0 60px;
+            font-size: 14px;
+            font-weight: 400;
+            list-style: none;
+            line-height: 2.1;
+            text-align: left;
+            li:before {
+                content: '';
+                display: inline-block;
+                margin-right: 17px;
+                width: 25px;
+                height: 25px;
+                background: url(../../assets/img/glazing/check.png) no-repeat center;
+                background-size: 100%;
+                vertical-align: middle;
+            }
+        }
+    }
+    &_cold {
+        margin-top: 40;
+        text-align: center;
+        border-bottom-left-radius: 5px;
+        border-top-left-radius: 5px;
+        border-top: 5px solid #0089cd;
+        background: -webkit-gradient(linear, left top, left bottom, from(#c7dce9), color-stop(0%, #c7dce9), to(rgba(255, 255, 255, 0)));
+        background: linear-gradient(180deg, #c7dce9 0%, #c7dce9 0%, rgba(255, 255, 255, 0) 100%);
+        h3 {
+            margin-bottom: 25px;
+            font-size: 20px;
+            font-family: 'Open Sans', sans-serif;
+            font-weight: 700;
+            font-style: normal;
+            text-transform: uppercase;
+            color: #0089cd;
+        }
+        img {
+            width: 466px;
+            height: 300px;
+            object-fit: cover;
+        }
+    }
+    &_warm {
+        text-align: center;
+        border-bottom-right-radius: 5px;
+        border-top-right-radius: 5px;
+        border-top: 0.5rem solid #ffb903;
+        background: -webkit-gradient(linear, left top, left bottom, from(#f7eac9), color-stop(0%, #f7eac9), to(rgba(255, 255, 255, 0)));
+        background: linear-gradient(180deg, #f7eac9 0%, #f7eac9 0%, rgba(255, 255, 255, 0) 100%);
+        h3 {
+            margin-bottom: 2.5rem;
+            font-size: 2rem;
+            font-family: 'Open Sans', sans-serif;
+            font-weight: 700;
+            font-style: normal;
+            text-transform: uppercase;
+            color: #ffb903;
+        }
+        img {
+            width: 466px;
+            height: 300px;
+            object-fit: cover;
+        }
+    }
+    &_price {
+        padding: 0 6rem;
+        p {
+            display: inline-block;
+            margin-right: 30px;
+            vertical-align: middle;
+            font-size: 20px;
+            line-height: 1.7;
+            font-family: 'Open Sans', sans-serif;
+            font-weight: 700;
+            font-style: normal;
+            span {
+                font-size: 14px;
+                font-family: 'Open Sans', sans-serif;
+                font-weight: 400;
+                font-style: normal;
+            }
+        }
+    }
+}

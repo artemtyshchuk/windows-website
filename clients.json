@@ -1,0 +1,209 @@
+{
+  "clients": [
+    {
+      "id": "123",
+      "name": "Artem",
+      "phoneNumber": "796717362"
+    },
+    {
+      "id": "fd98675e-5300-4c0b-a189-a0201e68a52a",
+      "name": "",
+      "phone": ""
+    },
+    {
+      "id": "83cb2125-a4da-4257-9ee8-f71ba49c33e3",
+      "name": "",
+      "phone": ""
+    },
+    {
+      "id": "dbd0bb1c-ce97-4442-884a-edf516db9f13",
+      "name": "",
+      "phone": ""
+    },
+    {
+      "id": "f69a359b-8525-40f8-9aa3-ba6df0a75229",
+      "name": "",
+      "phone": ""
+    },
+    {
+      "id": "189ec88c-d283-4cca-8a43-9b62af0b5624",
+      "name": "",
+      "phone": ""
+    },
+    {
+      "id": "8b0866c9-4569-40fd-8147-4596becc51c6",
+      "name": "",
+      "phone": ""
+    },
+    {
+      "id": "2d36e38f-6cd9-4b5a-880a-f39d13474ea4",
+      "name": "adam",
+      "phone": "123"
+    },
+    {
+      "id": "38662e12-cf67-4db6-af7c-bfefe79608eb",
+      "name": "glen",
+      "phone": "643"
+    },
+    {
+      "id": "cc64b357-c52c-4c42-b0d3-e5a1b4aea7cc",
+      "name": "stasy",
+      "phone": "566565656"
+    },
+    {
+      "id": "bad5a3aa-3342-4b9e-818d-7aef77b0f658",
+      "name": "ggfgfgfgfgfgfgfgfgfgfgfgfgfg",
+      "phone": "5554545454545"
+    },
+    {
+      "id": "303503ec-104b-48eb-ae69-6a37bf2d5b79",
+      "name": "grgrgrgrgrgrgrvbgbgbgbgbgb",
+      "phone": "45454"
+    },
+    {
+      "id": "d5684335-2040-457e-88ba-6e841807594e",
+      "name": "",
+      "phone": ""
+    },
+    {
+      "id": "c3f68648-76da-494b-807d-f42bb163190b",
+      "name": "",
+      "phone": ""
+    },
+    {
+      "id": "5ffd8baf-1887-42ec-b86a-f7553349c4d7",
+      "name": "",
+      "phone": ""
+    },
+    {
+      "id": "163ba39f-7716-4185-9ef6-867451486962",
+      "name": "",
+      "phone": ""
+    },
+    {
+      "id": "3a414194-d784-40b4-93aa-e6370411ffa9",
+      "name": "",
+      "phone": ""
+    },
+    {
+      "id": "b201f67e-6f3f-496c-89e3-53f49278841e",
+      "name": "",
+      "phone": ""
+    },
+    {
+      "id": "aac21ce3-0942-42bf-b87f-debb82f64ea8",
+      "name": "",
+      "phone": ""
+    },
+    {
+      "id": "c934f378-1119-49c5-8498-6a726ac179a1",
+      "name": "",
+      "phone": ""
+    },
+    {
+      "id": "1b170f27-2dbb-4310-a07c-8629a7bebfa8",
+      "name": "",
+      "phone": ""
+    },
+    {
+      "id": "e3f6bf5f-4461-4925-8ce9-bbb736d20b8a",
+      "name": "",
+      "phone": ""
+    },
+    {
+      "id": "f63770e4-7274-4f2e-9ba3-d487825391a7",
+      "name": "",
+      "phone": ""
+    },
+    {
+      "id": "b8cefdd2-a18c-4225-b916-c9196521cb03",
+      "name": "",
+      "phone": ""
+    },
+    {
+      "id": "fd32c386-f45b-4cbc-bee2-ff04f6d34a0c",
+      "name": "",
+      "phone": ""
+    },
+    {
+      "id": "56e0207f-c953-486b-b221-b4159bb264b6",
+      "name": "",
+      "phone": ""
+    },
+    {
+      "id": "a59a94cf-7efc-47c9-96d0-e7a09c3a9503",
+      "name": "",
+      "phone": ""
+    },
+    {
+      "id": "2dd67118-6386-4aab-b3e6-1f50c805ad37",
+      "name": "",
+      "phone": ""
+    },
+    {
+      "id": "870dcf34-c0a1-4e14-b6d6-e01bf5fc5429",
+      "name": "",
+      "phone": ""
+    },
+    {
+      "id": "ee5d884d-bd08-4e74-9261-3791c0cf6a33",
+      "name": "",
+      "phone": ""
+    },
+    {
+      "id": "de6faed0-5b68-4109-af5b-9520bffc4e1e",
+      "name": "",
+      "phone": ""
+    },
+    {
+      "id": "8af9f1f9-74b4-4292-a027-7dddaecbe33e",
+      "name": "",
+      "phone": ""
+    },
+    {
+      "id": "be3950b5-e581-4f8d-b887-0ce37b6daaa8",
+      "name": "",
+      "phone": ""
+    },
+    {
+      "id": "a8864edd-c418-435d-a80f-129318a4c745",
+      "name": "",
+      "phone": ""
+    },
+    {
+      "id": "1f8fac89-ede1-4c22-80b8-07eac45c1df2",
+      "name": "",
+      "phone": ""
+    },
+    {
+      "id": "42c15325-4eb2-4306-8f04-0952385ce5ad",
+      "name": "",
+      "phone": ""
+    },
+    {
+      "id": "f7698ecb-1cea-4505-a9dc-4793b9053ebc",
+      "name": "jim",
+      "phone": "666"
+    },
+    {
+      "id": "b1180cf9-880d-4103-90f7-acd4e32343f5",
+      "name": "",
+      "phone": ""
+    },
+    {
+      "id": "f122d067-ea3d-4138-b7d6-374cc96c85db",
+      "name": "4444",
+      "phone": "44444"
+    },
+    {
+      "id": "74c65ce3-ba61-4ec2-84ed-07388a10caba",
+      "name": "ivan",
+      "phone": "777"
+    },
+    {
+      "id": "198029b7-a5c9-4a0e-b68a-d39901365133",
+      "name": "agent",
+      "phone": "44444444"
+    }
+  ]
+}
