@@ -9,7 +9,6 @@ import Promotion from '../promotion/Promotion';
 import Contacts from '../contacts/Contacts';
 import Feedback from '../feedback/Feedback';
 import Footer from '../footer/Footer'
-import Calculator from '../calculator/Calculator';
 
 const App = () => {
     return (
@@ -26,7 +25,6 @@ const App = () => {
                 <Contacts/>
                 <Feedback/>
                 <Footer/>
-                {/* <Calculator/> */}
             </div>
         </div>
     )
