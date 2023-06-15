@@ -1,7 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
 
-import glazingSlice from '../components/glazing/glazingSlice';
-import calculatorSlice from '../components/calculator/calculatorSlice';
+import glazing from '../components/glazing/glazingSlice';
+import calculator from '../components/calculator/calculatorSlice';
 import clients from '../components/formCard/formSlice';
 
 const stringMiddleware = (store) => (next) => (action) => {
@@ -16,7 +16,7 @@ const stringMiddleware = (store) => (next) => (action) => {
 
 
 const store = configureStore({ //через toolkit
-    reducer: {clients, glazingSlice, calculatorSlice},
+    reducer: {clients, glazing, calculator},
     middleware: getDefaultMiddleware => getDefaultMiddleware().concat(stringMiddleware),
     devTools: process.env.NODE_ENV !== 'production', // если продакшн то активен, если нет то нет
 })

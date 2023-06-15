@@ -16,7 +16,7 @@ import { closeCalculatorInCalculatorSlice } from './calculatorSlice';
 
 const Calculator = () => {
     const [selectedImageIndex, setSelectedImageIndex] = useState(0);
-    const isCalculatorOpen = useSelector(state => state.isCalculatorOpen);
+    const isCalculatorOpen = useSelector(state => state.glazing.isCalculatorOpen);
     const dispatch = useDispatch();
 
     const images = [

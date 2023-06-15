@@ -5,7 +5,7 @@ import Glazing from '../glazing/Glazing';
 import Calculator from '../calculator/Calculator';
 
 const ParentComponent = () => {
-    const isCalculatorOpen = useSelector(state => state.glazing.isCalculatorOpen);
+    const isCalculatorOpen = useSelector(state => state.glazingSlice.isCalculatorOpen);
     const dispatch = useDispatch();
   
     const handleOpenCalculator = () => {

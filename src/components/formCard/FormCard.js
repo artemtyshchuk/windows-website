@@ -24,8 +24,7 @@ const FormCard = () => {
 			phone: clientPhone
 		}
 		if (!clientName || !clientPhone) {
-			return
-			// return alert('Заполните поля для отправки!')
+			return alert('Заполните поля для отправки!')
 		}
 		request("http://localhost:3001/clients", "POST", JSON.stringify(newClient))
             .then(res => console.log(res, 'Отправка успешна'))
