@@ -70,6 +70,24 @@
 				width: 300px;
 			}
 		}
+		.form-control {
+			width: 100%;
+			height: 34px;
+			padding: 6px 12px;
+			font-size: 14px;
+			line-height: 1.42857143;
+			color: #555;
+			background-color: #fff;
+			background-image: none;
+			border: 1px solid #ccc;
+			border-radius: 4px;
+			margin-left: auto;
+			margin-right: auto;
+			width: 250px;
+			height: 35px;
+			grid-row: 3/4;
+			text-align: center;
+		}
 		&_form {
 			grid-row: 5/6;
 			display: grid;
@@ -114,6 +132,33 @@
 			
 			
 		}
+		&_cold {
+			display: grid;
+			justify-content: center;
+			grid-template-rows: repeat(2, auto);
+			.checkbox {
+				width: 15px;
+				height: 15px;
+			}
+			.label {
+				font-size: 15px;
+				padding-left: 10px;
+			}	
+		}
+		&_warm {
+			padding: 25px 0;
+			display: grid;
+			justify-content: center;
+			grid-template-rows: repeat(2, auto);
+			.checkbox {
+				width: 15px;
+				height: 15px;
+			}
+			.label {
+				font-size: 15px;
+				padding-left: 10px;
+			}	
+		}
 	}
 	&_close {
 		position: absolute;
@@ -124,4 +169,18 @@
 		border: none;
 		background: transparent;
 	}
+	.form-control {
+		width: 315px;
+		padding: 20px 30px;
+    	margin-bottom: 20px;
+		height: 58px;
+		text-align: center;
+		border-radius: 10px;
+	}
+	.form_notice {
+		margin: 0;
+		padding-bottom: 10px;
+		font-size: 15px;
+	}
 }
+

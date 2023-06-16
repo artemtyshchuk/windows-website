@@ -9,13 +9,13 @@ import Promotion from '../promotion/Promotion';
 import Contacts from '../contacts/Contacts';
 import Feedback from '../feedback/Feedback';
 import Footer from '../footer/Footer'
-
+import Calculator from '../calculator/Calculator';
 
 const App = () => {
     return (
         <div className="app">
             <div className="content">
-                <Header/>
+                {/* <Header/>
                 <Main/>
                 <Glazing/>
                 <Decoration/>
@@ -25,7 +25,8 @@ const App = () => {
                 <Promotion/>
                 <Contacts/>
                 <Feedback/>
-                <Footer/>
+                <Footer/> */}
+                <Calculator/>
             </div>
         </div>
     )

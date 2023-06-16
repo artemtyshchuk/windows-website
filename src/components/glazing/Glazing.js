@@ -12,7 +12,6 @@ import './glazing.scss';
 
 import { dataGlazing } from './dataGlazing';
 import { openCalculator } from './glazingSlice';
-
 const Glazing = () => {
     const [selectedData, setSelectedData] = useState({
         cold: dataGlazing[0].wood[0].cold[0],
@@ -109,7 +108,7 @@ const Glazing = () => {
                 </div>
 
                 <div className="glazing_content">
-                    <motion.div className="glazing_card" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }}>
+                    <motion.div className="glazing_card" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1 }}>
                         <div className="glazing_card">
                             <div className="glazing_cold">
                                 <h3>Холодное</h3>
@@ -133,7 +132,7 @@ const Glazing = () => {
                             </div>
                         </div>
                     </motion.div>
-                    <motion.div className="glazing_card" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }}>
+                    <motion.div className="glazing_card" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1 }}>
                         <div className="glazing_card">
                             <div className="glazing_warm">
                                 <h3>теплое</h3>
