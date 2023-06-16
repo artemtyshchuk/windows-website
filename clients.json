@@ -209,6 +209,16 @@
       "id": "b1f9c4b2-6cf9-4899-8039-e3f89991ec3c",
       "name": "frfrfrff",
       "phone": "344434343"
+    },
+    {
+      "id": "a1fcc10f-ad45-466e-b3ba-5126a11f1463",
+      "windowType": 2,
+      "width": "35",
+      "height": "35",
+      "glazingMaterial": "plastic",
+      "glazingProfile": "Холодное",
+      "name": "Artem",
+      "phone": "555"
     }
   ]
 }

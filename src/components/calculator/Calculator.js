@@ -1,5 +1,9 @@
 import { useState, useEffect } from 'react';
+import {useHttp} from '../../hooks/http.hook'; //для того чтобы делать запрос
+
 import { useSelector, useDispatch } from 'react-redux';
+import { v4 as uuidv4 } from 'uuid';
+
 
 import typeOfWindow1 from '../../assets/img/modal_calc/balkon/ba_01.png';
 import typeOfWindow2 from '../../assets/img/modal_calc/balkon/ba_02.png';
@@ -15,15 +19,26 @@ import calculatorStepTwoIconWarm from '../../assets/img/modal_calc/icon_warm.png
 
 import './calculator.scss';
 import { closeCalculatorInCalculatorSlice } from './calculatorSlice';
-import FormCard from '../formCard/FormCard';
+import { clientsCreated } from '../formCard/formSlice';
+
 
 
 
 const Calculator = () => {
     const [selectedImageIndex, setSelectedImageIndex] = useState(0);
     const [step, setStep] = useState(0);
-    const isCalculatorOpen = useSelector(state => state.glazing.openCalculator);
+    // const isCalculatorOpen = useSelector(state => state.glazing.openCalculator);
+
+    const [windowType, setWindowType] = useState();
+    const [width, setWidth] = useState('');
+    const [height, setHeight] = useState('');
+    const [glazingMaterial, setGlazingMaterial] = useState();
+    const [glazingProfile, setGlazingProfile] = useState();
+    const [clientName, setClientName] = useState('');
+	const [clientPhone, setClientPhone] = useState('');
+
     const dispatch = useDispatch();
+    const {request} = useHttp();
 
     const images = [
         { thumbnail: typeOfWindow1, largeImage: largeImageOfWindow1 },
@@ -34,7 +49,42 @@ const Calculator = () => {
 
     const handleImageChange = (index) => {
         setSelectedImageIndex(index);
+        setWindowType(index);
     };
+
+    const handleNextButtonClick = () => {
+        setStep(step => step + 1);
+    }
+
+    const handleRequestAndNextStepButtonClick = (e) => {
+        handleNextButtonClick();
+        onSubmitHandler(e);
+    }
+
+    const onSubmitHandler = (e) => {
+		e.preventDefault();
+        const newClient = {
+			id: uuidv4(),
+            windowType: windowType,
+            width: width,
+            height: height,
+            glazingMaterial: glazingMaterial,
+            glazingProfile: glazingProfile,
+            name: clientName,
+            phone: clientPhone
+        }
+        request("http://localhost:3001/clients", "POST", JSON.stringify(newClient))
+            .then(res => console.log(res, 'Отправка успешна'))
+            .then(dispatch(clientsCreated(newClient)))
+            .catch(err => console.log(err));
+        setWindowType()
+        setWidth('')
+        setHeight('')
+        setGlazingMaterial()
+        setGlazingProfile()
+		setClientName('')
+		setClientPhone('')
+    }
 
     useEffect(() => {
         const handleKeyPress = (event) => {
@@ -50,9 +100,6 @@ const Calculator = () => {
         };
     }, [dispatch]);
 
-    const handleNextButtonClick = () => {
-        setStep(step => step + 1);
-    }
 
     return (
         <>
@@ -85,14 +132,14 @@ const Calculator = () => {
 
                                     <div className="popup_calc_content_form">
                                         <div className="popup_calc_content_form_formControlWidth">
-                                            <input id="width" type="text" placeholder="Ширина" required />
+                                            <input id="width" type="text" placeholder="Ширина" required onChange={(e) => setWidth(e.target.value)}/>
                                             <label htmlFor="width">м</label>
                                         </div>
                                         <div className="popup_calc_content_form_multiplication">
                                             <strong>&times;</strong>
                                         </div>
                                         <div className="popup_calc_content_form_formControlHeight">
-                                            <input id="height" type="text" placeholder="Высота" required />
+                                            <input id="height" type="text" placeholder="Высота" required onChange={(e) => setHeight(e.target.value)}/>
                                             <label htmlFor="height">мм</label>
                                         </div>
                                     </div>
@@ -107,7 +154,7 @@ const Calculator = () => {
                                 <>
                                     <h3>Выберите тип остекления<br />и его профиль</h3>
                     
-                                    <select className="form-control" name="view" id="view_type">
+                                    <select className="form-control" name="view" id="view_type" onChange={(event) => setGlazingMaterial(event.target.value)}>
                                         <option value="wood">Деревянное остекление</option>
                                         <option value="aluminum">Алюминиевое остекление</option>
                                         <option value="plastic">Остекление пластиковыми рамами</option>
@@ -120,7 +167,7 @@ const Calculator = () => {
                                             <img src={calculatorStepTwoIconCold} alt="calculatorStepTwoIconCold" />
                                         </div>
                                             <label>
-                                                <input className="checkbox" type="checkbox" name="checkbox-test"/>
+                                                <input className="checkbox" type="checkbox" name="checkbox-test" onChange={(event) => setGlazingProfile(event.target.checked ? 'Холодное' : '')}/>
                                                 <span className="checkbox-custom" id="cold"></span>
                                                 <span className="label">Холодное</span>
                                             </label>
@@ -131,7 +178,7 @@ const Calculator = () => {
 								            <img src={calculatorStepTwoIconWarm} alt="calculatorStepTwoIconWarm"/>
                                         </div>
 								        <label>
-										    <input className="checkbox" type="checkbox" name="checkbox-test"/>
+										    <input className="checkbox" type="checkbox" name="checkbox-test" onChange={(event) => setGlazingProfile(event.target.checked ? 'Теплое' : '')}/>
 										    <span className="checkbox-custom" id="warm"></span>
 										    <span className="label">Теплое</span>
 								        </label>
@@ -147,14 +194,14 @@ const Calculator = () => {
                                 <>
                                     <h3>Спасибо за обращение! <br/>Оставьте свои данные</h3>
                                     <form className="form" action="#">
-                                        <input className="form-control form_input" name="user_name" required type="text" placeholder="Введите ваше имя"/>
-                                        <input className="form-control form_input" name="user_phone" required type="text" placeholder="Введите телефон"/>
+                                        <input className="form-control form_input" name="user_name" required type="text" placeholder="Введите ваше имя" onChange={(event) => setClientName(event.target.value)}/>
+                                        <input className="form-control form_input" name="user_phone" required type="text" placeholder="Введите телефон" onChange={(event) => setClientPhone(event.target.value)}/>
                                         <p className="form_notice">Перезвоним в течение 10 минут</p>
                                         <p className="form_notice_confidential">Ваши данные конфиденциальны</p>
 									</form>
 
                                     <div className="popup_calc_content_button">
-                                        <button className="button" onClick={handleNextButtonClick}>Рассчитать стоимость</button>
+                                        <button className="button" onClick={handleRequestAndNextStepButtonClick}>Рассчитать стоимость</button>
                                     </div>
                                 </>
                             )}
