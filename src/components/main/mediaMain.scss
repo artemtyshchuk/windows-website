@@ -1,0 +1,101 @@
+@media (max-width: 1439px) { //1201
+    .main {
+        padding: 70px 50px;
+        h1 {
+            padding-left: 20px; 
+        }
+    }
+}
+
+@media (max-width: 1200px) { //993
+    .main {
+        padding: 70px 20px;
+        h1 {
+            padding-left: 20px; 
+        }
+        .row {
+            grid-template-columns: auto 380px;
+        }
+        &_features {
+            display: grid;
+            align-content: space-between;
+            align-items: end;
+            margin-top: 0;
+        }
+    }
+}
+
+@media (max-width: 992px) { //769
+    .main {
+        margin-top: 40px;
+        padding: 40px 20px;
+        h1 {
+            align-content: top;
+            line-height: 1.2;
+            font-size: 35px;
+        }
+        .row {
+            grid-template-rows: auto auto;
+        }
+        &_features {
+            display: grid;
+            grid-template-columns: repeat(2, auto);
+            grid-template-rows: repeat(2, auto);
+            column-gap: 20px;
+            row-gap: 30px;
+            align-items: end;
+            margin-top: 0;
+        }
+    }
+}
+
+@media (max-width: 768px) { //577
+    .main {
+        margin-top: 40px;
+        padding: 40px 20px;
+        background-size: cover;
+        h1 {
+            padding: 0;
+            text-align: center;
+            line-height: 1.2;
+            font-size: 40px;
+        }
+        .row {
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-template-rows: repeat(3, auto);
+            row-gap: 25px;
+        }
+        &_features {
+            display: grid;
+            grid-template-columns: repeat(2, auto);
+            grid-template-rows: repeat(2, auto);
+            justify-content: space-around;
+        }
+    }
+}
+
+@media (max-width: 576px) {
+    .main {
+        padding: 35px 10px 10px 10px;
+        background-size: cover;
+        h1 {
+            padding: 0;
+            text-align: center;
+            line-height: 1.2;
+            font-size: 32px;
+        }
+        .row {
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-template-rows: repeat(3, auto);
+            row-gap: 25px;
+        }
+        &_features {
+            display: grid;
+            grid-template-columns: repeat(2, auto);
+            grid-template-rows: repeat(2, auto);
+            justify-content: space-around;
+        }
+    }
+}

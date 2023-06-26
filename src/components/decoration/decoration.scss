@@ -1,13 +1,6 @@
 .decoration {
-	display: grid;
-	padding: 80px 0;
+	padding: 80px 100px;
 	background-color: #f7f7f7;
-	padding-right: 150px;
-	padding-left: 150px;
-	&_slider {
-		display: grid;
-		grid-template-columns: repeat(4, auto);
-	}
 	&_item{
 		text-align: center;
 		a {
@@ -61,6 +54,7 @@
 			grid-column: 1/2;
 			grid-row: 1/3;
 			img {
+				margin-top: 20px;
 				width: 300px;
 				height: 440px;
 				object-fit: cover;
@@ -118,4 +112,6 @@
 	padding: 2rem 0;
 	border-top: 1rem solid #f7f7f7;
 }
+
+
 

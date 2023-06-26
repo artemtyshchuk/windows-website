@@ -8,6 +8,7 @@ import { useState } from 'react';
 
 import FormCard from '../formCard/FormCard';
 import './main.scss';
+import './mediaMain.scss';
 
 
 

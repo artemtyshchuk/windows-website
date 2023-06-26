@@ -1,42 +1,8 @@
 .footer {
     padding: 40px 0;
-    &_wrapper {
+    .footer_logo {
         display: grid;
-        grid-template-columns: 829px auto;
-        column-gap: 280px;
-
-    }
-    &_logo {
-        display: grid;
-        justify-content: end;
-        text-align: center;
-    }
-    &_contacts {
-        display: grid;
-        justify-content: end;
-        padding: 0;
-        margin: auto;
-        text-align: right;
-        a {
-            display: block;
-        }
-        &-phone {
-            font-size: 18px;
-            font-weight: 700;
-            font-style: normal;
-            color: #333333;
-        }
-        &-email {
-            font-size: 14px;
-            color: #0089cd;
-            text-decoration: underline;
-        }
-    }
-    .copyright {
-        p {
-            font-size: 15px;
-            line-height: 1.6;
-        }
+        justify-content: center;
     }
 }
 

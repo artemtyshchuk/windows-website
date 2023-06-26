@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react';
 
-import './promotion.scss';
 import FormCard from '../formCard/FormCard';
+
+import './promotion.scss';
+import './mediaPromotion.scss';
 
 
 const Promotion = () => {

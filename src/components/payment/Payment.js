@@ -4,6 +4,7 @@ import museum from '../../assets/img/payment/museum.png'
 
 
 import './payment.scss';
+import './mediaPayment.scss';
 
 const Payment = () => {
     return (

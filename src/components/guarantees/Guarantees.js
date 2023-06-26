@@ -7,6 +7,7 @@ import sixthPictureOfGuarantees from '../../assets/img/guarantees/6.png'
 
 
 import './guarantees.scss';
+import './mediaGuarantees.scss';
 
 const Guarantees = () => {
     return (

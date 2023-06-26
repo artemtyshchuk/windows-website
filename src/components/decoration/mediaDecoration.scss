@@ -1,0 +1,100 @@
+@media (max-width: 1439px) { //1201
+    .decoration {
+        padding: 80px 50px;
+    }
+    .decoration_content_form {
+        display: none;
+    }
+}
+
+@media (max-width: 1200px) { //993
+    .decoration {
+        padding: 50px 40px;
+        &_content {
+            margin-top: 20px;
+        }
+    }
+    .decoration_content_form {
+        display: none;
+    }
+}
+
+@media (max-width: 992px) { //769
+    .decoration {
+        padding: 50px 40px;
+        &_content {
+            margin-top: 20px;
+            grid-template-columns: repeat(2, auto);
+            grid-template-rows: repeat(2, auto);
+            row-gap: 20px;
+            &_wrapper {
+                margin-top: 45px;
+                grid-template-columns: repeat(2, 155px);
+                grid-template-rows: repeat(3, auto);
+            }
+            &_form {
+                display: grid;
+                grid-column: 1 / 3;
+                grid-row: 3 / 4;
+            }
+        }
+    }
+    .decoration_content_form {
+        display:none;
+    }
+}
+
+@media (max-width: 768px) { //577
+    .decoration {
+        padding: 50px 40px;
+        &_content {
+            margin-top: 20px;
+            grid-template-columns: 1fr;
+            grid-template-rows: repeat(3, auto);
+            row-gap: 20px;
+            &_wrapper {
+                margin-top: 45px;
+                grid-column: 1 / 2;
+			    grid-row: 3 / 4;
+                grid-template-columns: repeat(2, 155px);
+                grid-template-rows: repeat(3, auto);
+            }
+            &_form {
+                display: grid;
+                grid-column: 1 / 2;
+                grid-row: 4 / 5;
+            }
+        }
+    }
+    .decoration_content_form {
+        display:block;
+    }
+}
+
+@media (max-width: 576px) {
+    .decoration {
+        padding: 10px;
+        &_slider {
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+        &_content {
+            margin-top: 20px;
+            grid-template-columns: 1fr;
+            grid-template-rows: repeat(3, auto);
+            row-gap: 20px;
+            &_wrapper {
+                margin-top: 0;
+                grid-column: 1 / 2;
+			    grid-row: 3 / 4;
+                grid-template-columns: repeat(2, 134px);
+                grid-template-rows: repeat(3, auto);
+            }
+            &_form {
+                display: grid;
+                grid-column: 1 / 2;
+                grid-row: 4 / 5;
+            }
+        }
+    }
+}

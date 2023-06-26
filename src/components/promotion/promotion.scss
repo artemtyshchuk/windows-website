@@ -1,10 +1,8 @@
 
 .sale {
-    padding: 80px 0;
+    padding: 80px 150px;
     background: #ffffff url(../../assets/img/sale/bg.jpg) center center no-repeat;
     &_wrapper {
-        padding-left: 150px;
-        padding-right: 150px;
         display: grid;
         grid-template-columns: repeat(2, 500px);
         grid-template-rows: repeat(3, auto);

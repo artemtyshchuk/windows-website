@@ -9,13 +9,9 @@ const Footer = () => {
 				<div className="footer_wrapper">
 
                     <div className="footer_logo">
-                        <img src={logo} alt="#"/>
+                        <img src={logo} alt="footer_logo"/>
                     </div>
 
-                    <div className="footer_contacts">
-                        <a className="footer_contacts-phone" href="http.git.com">+38 (063) 295-59-30</a>
-                        <a className="footer_contacts-email" href="http.git.com">info@irvasokna.ru</a>
-                    </div>
 				</div>
 			</div>
         </div>

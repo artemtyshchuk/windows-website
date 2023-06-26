@@ -1,0 +1,28 @@
+@media (max-width: 1439px) { //1201
+    
+}
+
+@media (max-width: 1200px) { //993
+   
+}
+
+@media (max-width: 992px) { //769
+    
+}
+
+@media (max-width: 576px) {
+    .works {
+        padding: 20px 0;
+        img {
+            width: 280px;
+            height: 280px;
+        }
+        
+    }
+    .section_header {
+        h2 {
+            margin-bottom: 10px;
+        }
+    }
+
+}

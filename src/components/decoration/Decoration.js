@@ -1,10 +1,14 @@
-
-import './decoration.scss';
-
 import { useState, useCallback, useRef} from 'react';
 import FormCard from '../formCard/FormCard';
 import { motion } from 'framer-motion';
 import { dataDecoration } from './dataDecoration';
+
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css"; // Импорт стилей для слайдера
+import "slick-carousel/slick/slick-theme.css"; // Импорт темы для слайдера
+
+import './decoration.scss';
+import './mediaDecoration.scss';
 
 const Decoration = () => {
 	const [selectedData, setSelectedData] = useState(dataDecoration[0].interiorDecoration[0]);
@@ -15,9 +19,8 @@ const Decoration = () => {
 	const handleClick = useCallback((data, event, index) => {
 		event.preventDefault();
 		setSelectedData(data);
+
 		setActiveDiv(index);
-		
-	
 		if (divRef.current) {
 		  divRef.current.classList.remove('_active');
 		}
@@ -29,7 +32,40 @@ const Decoration = () => {
 		console.log(1);
 	}, [setSelectedData]);
 
-
+	const settings = {
+		dots: true,
+		infinite: false,
+		speed: 500,
+		slidesToShow: 4,
+		initialSlide: 0,
+		responsive: [
+		  {
+			breakpoint: 1024,
+			settings: {
+			  slidesToShow: 2,
+			  slidesToScroll: 2,
+			  infinite: true,
+			  dots: true
+			}
+		  },
+		  {
+			breakpoint: 600,
+			settings: {
+			  slidesToShow: 2,
+			  slidesToScroll: 2,
+			  initialSlide: 2
+			}
+		  },
+		  {
+			breakpoint: 480,
+			settings: {
+			  slidesToShow: 1,
+			  slidesToScroll: 1,
+			  initialSlide: 0,
+			}
+		  }
+		]
+	};
 
 	return (
 		<div className="decoration">
@@ -38,8 +74,9 @@ const Decoration = () => {
 				<h2>ЗАКАЖИТЕ ОТДЕЛКУ БАЛКОНА СО СКИДКОЙ 60%!</h2>
 				<div className="section_header_sub"></div>
 			</div>
-
 			<div className="decoration_slider">
+			<Slider {...settings}>
+
 				<div className={`decoration_item${activeDiv === 0 ? '_active' : ''}`}>
 					<div 
 						className="internal_link no_click" 
@@ -71,6 +108,7 @@ const Decoration = () => {
 						<a href='http.git.com'>Крыша на балкон</a>
 					</div>
 				</div>
+			</Slider>
 			</div>
 
 			<div className="decoration_content">

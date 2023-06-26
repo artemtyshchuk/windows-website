@@ -8,11 +8,17 @@
 	height: 100%;
 	z-index: 9;
 	background-color: rgba(0, 0, 0, 0.5);
+	&_close {
+		:hover {
+			cursor: pointer;
+		}
+	}
 	&_content {
 		display: grid;
 		grid-template-columns: 420px;
 		grid-template-rows: repeat(6, auto);
-		
+		justify-content: center;
+		border-radius: 10px;
 		position: fixed;
 		top: 2%;
 		left: 50%;
@@ -39,20 +45,23 @@
   			margin-bottom: 30px;
 		}
 		.balcon_icons {
-			justify-content: space-between;
+			// display: grid;
 			grid-row: 3/4;
-			display: grid;
-			grid-template-columns: repeat(4, auto);
+			// grid-template-columns: repeat(4, auto);
 			margin-bottom: 10px;
 			&_img {
 				padding-top: 10px;
-				margin-right: 0;
+				padding-right: 5px;
+				padding-left: 5px;
+
 				:hover {
 					cursor: pointer;
+					transition: transform 0.3s ease;
+					transform: scale(1.1);
 				}
-				
 			}
 			.do_image_more {
+				transition: transform 0.3s ease;
 					img {
 						width: 110px;
     					height: 70px;
@@ -65,7 +74,6 @@
 			justify-content: center;
 			grid-row: 4/5;
 			img {
-				// display: none;
 				margin-bottom: 30px;
 				width: 300px;
 			}
@@ -91,7 +99,7 @@
 		&_form {
 			grid-row: 5/6;
 			display: grid;
-			justify-content: space-evenly;
+			justify-content: center;
 			text-align: center;
 			&_formControlWidth {
 				grid-column: 2/3;
@@ -123,13 +131,14 @@
 			}
 			label {
 				color: #999;
+				font-size: 15px;
 			}
 		}
 		&_button {
 			display: grid;
 			justify-content: center;
 			grid-row: 6/7;
-			
+			text-align: center;
 			
 		}
 		&_cold {
@@ -169,6 +178,16 @@
 		border: none;
 		background: transparent;
 	}
+	&_forma {
+		display: grid;
+		justify-content: center;
+		text-align: center;
+	}
+	&_notice {
+		margin: 0;
+		padding-bottom: 10px;
+		font-size: 15px;
+	}
 	.form-control {
 		width: 315px;
 		padding: 20px 30px;
@@ -177,10 +196,9 @@
 		text-align: center;
 		border-radius: 10px;
 	}
-	.form_notice {
-		margin: 0;
-		padding-bottom: 10px;
-		font-size: 15px;
-	}
+	// .form_notice {
+	// 	margin: 0;
+	// 	padding-bottom: 10px;
+	// 	font-size: 15px;
+	// }
 }
-

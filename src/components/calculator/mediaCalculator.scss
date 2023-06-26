@@ -1,0 +1,99 @@
+@media (max-width: 1439px) { //1201
+    
+}
+
+@media (max-width: 1200px) { //993
+   
+}
+
+@media (max-width: 992px) { //769
+    .popup_calc {
+       &_content {
+        grid-template-columns: 330px;
+        width: 350px;
+       }
+       .balcon_icons {
+            align-content: center;
+            margin-bottom: 20px;
+            height: 100px;
+        &_img {
+            padding: 0;
+
+        }
+            img {
+                margin-left: auto;
+                margin-right: auto;
+            }
+       }
+    }
+}
+
+@media (max-width: 768px) { //577
+    .popup_calc {
+        &_content {
+            margin-top: 40px;
+            grid-template-columns: 330px;
+            width: 350px;
+            // position: relative; 
+            h2 {
+                margin-bottom: 10px;
+            }
+            h3 {
+                margin-bottom: 10px;
+            }
+            .big_img {
+                img {
+                    margin-bottom: 10px;
+                }
+            }
+        }
+        .balcon_icons {
+            align-content: center;
+            margin-bottom: 10px;
+            height: 100px;
+        &_img {
+            padding: 0;
+ 
+        }
+            img {
+                margin-left: auto;
+                margin-right: auto;
+            }
+        }
+    }
+}
+
+@media (max-width: 576px) {
+    .popup_calc {
+        &_content {
+         grid-template-columns: 330px;
+         width: 300px;
+         position: relative; 
+            padding: 10px;
+        }
+        &_close {
+            margin-top: 50px;
+            position: absolute;
+            bottom: -115%;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 40px;
+            color: #ffffff;
+            border: none;
+            background: transparent;
+        }
+        .balcon_icons {
+            align-content: center;
+            margin-bottom: 20px;
+            height: 100px;
+        &_img {
+            padding: 0;
+ 
+        }
+            img {
+                margin-left: auto;
+                margin-right: auto;
+            }
+        }
+    }
+}

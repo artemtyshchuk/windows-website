@@ -11,7 +11,6 @@
 }
 
 html {
-    /* overflow-x: hidden; */
     font-size: 10px;
 }
 
@@ -55,4 +54,59 @@ ul {
         height: 0.2rem;
         background: url(../../assets/img/glazing/line.png) 0 0 no-repeat;
     }
+}
+
+.modal_overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 9;
+}
+  
+.modal_form {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 360px;
+    height: 435px;
+    margin-top: 20px;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    background-color: white;
+    ._close {
+        :hover {
+			cursor: pointer;
+		}
+    }
+}
+
+@media (max-width: 576px) {
+    .modal_form {
+        // margin-top: 25px;
+        margin: 0;
+        width: 300px;
+        height: 425px;
+        // margin: 45px auto;
+        grid-column: 1/2;
+        grid-row: 3/4;
+        h2 {
+            font-size: 18px;
+            span {
+                font-size: 22px;
+            }
+        }
+    }
+    
+}
+
+.slick-next:before {
+    color: black;
+}
+.slick-prev:before {
+    color: black;
 }

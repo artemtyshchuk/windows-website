@@ -1,5 +1,6 @@
 
 import './contacts.scss';
+import './mediaContacts.scss';
 
 const Contacts = () => {
     return (
@@ -12,7 +13,7 @@ const Contacts = () => {
                 <div className="contacts_wrapper">
                     <iframe
                         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2443.6124574898727!2d20.981694476982057!3d52.23225837198721!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x471ecc84a53fffff%3A0xcc34cf4eefdeab0b!2sWarsaw%20Spire!5e0!3m2!1sru!2spl!4v1686319051631!5m2!1sru!2spl"
-                        width="600"
+                        width="100%"
                         height="450"
                         style={{ border: 0 }}
                         allowFullScreen=""

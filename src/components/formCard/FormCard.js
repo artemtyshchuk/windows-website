@@ -1,14 +1,16 @@
+import { useState, useEffect} from 'react';
 import {useHttp} from '../../hooks/http.hook'; //для того чтобы делать запрос
-import { useState } from 'react';
 import { useDispatch } from 'react-redux'; //два хука которые используются в redux
 import { v4 as uuidv4 } from 'uuid';
 import { Formik, Form, Field, ErrorMessage as FormikErrorMessage } from 'formik';
 import * as Yup from 'yup';
 
 import { clientsCreated } from './formSlice';
+import { closeModal } from '../../features/modal/modalSlice';
 import './formCard.scss';
+import './mediaFormCard.scss';
 
-const FormCard = () => {
+const FormCard = ({modal_form, isModal}) => {
 	const [isFormSubmitted, setIsFormSubmitted] = useState(false);
   	const [clientName, setClientName] = useState('');
 	const [clientPhone, setClientPhone] = useState('');
@@ -25,6 +27,9 @@ const FormCard = () => {
 		}
 		if (!clientName || !clientPhone) {
 			return alert('Заполните поля для отправки!')
+		}
+		if (isModal) {
+			dispatch(closeModal());
 		}
 		request("http://localhost:3001/clients", "POST", JSON.stringify(newClient))
             .then(res => console.log(res, 'Отправка успешна'))
@@ -45,17 +50,28 @@ const FormCard = () => {
 		  .max(50, 'Too Long!')
 		  .required('Required'),
 	});
+
+	useEffect(() => {
+        const handleKeyPress = (event) => {
+            if (event.key === 'Escape' && isModal) {
+                dispatch(closeModal());
+            }
+        };
+
+        window.addEventListener('keydown', handleKeyPress);
+
+        return () => {
+            window.removeEventListener('keydown', handleKeyPress);
+        };
+    }, [dispatch, isModal]);
 	 
-
-
-
 
 	// const handleSubmit = () => {
 	// 	setIsFormSubmitted(true);
   	// };
 
 	return (
-		<div className="form main_form">
+		<div className={`form main_form ${modal_form}`}>
 		<Formik
 			initialValues={{
 			clientName: '',
@@ -66,6 +82,11 @@ const FormCard = () => {
 
 			{() => (
 			<Form>
+				{isModal && (
+					<button type="button" className="popup_calc_close" onClick={() => {dispatch(closeModal())}}>
+						<strong>&times;</strong>
+					</button>
+				)}
 				<h2>
 				Запишитесь сегодня на <br />
 				<span>бесплатный замер</span>

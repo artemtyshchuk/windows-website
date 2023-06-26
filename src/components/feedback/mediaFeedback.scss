@@ -1,0 +1,29 @@
+@media (max-width: 1439px) { //1201
+
+}
+
+@media (max-width: 1200px) { //993
+    
+}
+
+@media (max-width: 992px) { //769
+    
+}
+
+@media (max-width: 768px) { //577
+    .feedback {
+        &_block {
+            display: grid;
+            h3 {
+                margin: 0; 
+            }
+            a {
+                font-size: 28px; 
+            }
+        }
+    }
+}
+
+@media (max-width: 576px) {
+   
+}

@@ -1,3 +1,6 @@
+import { useDispatch } from 'react-redux';
+
+
 import logo from "../../assets/img/header/logo.png"
 import clock from "../../assets/img/header/clock.png"
 import phone from "../../assets/img/header/phone.png"
@@ -5,7 +8,13 @@ import phone from "../../assets/img/header/phone.png"
 import './header.scss';
 import './mediaHeader.scss'
 
+import { openModal } from '../../features/modal/modalSlice'
+
+
 const Header = () => {
+    const dispatch = useDispatch();
+    
+
     return (
         <header className="header">
             <div className="container">
@@ -20,7 +29,7 @@ const Header = () => {
                 
                     <div className="header_btn_wrap">
                         <div className="header_btn_wrap_block">
-                            <button className="header_btn text-uppercase text-left popup_engineer_btn">Вызвать<br/>замерщика</button>
+                            <button className="header_btn text-uppercase text-left popup_engineer_btn" onClick={() => dispatch(openModal())}>Вызвать<br/>замерщика</button>
                         </div>
                     </div>
                 
@@ -33,8 +42,8 @@ const Header = () => {
                 
                     <div className="contact_us">
                         <div className="contact_us_wrap">
-                            <a href="http.git.com"><img src={phone} alt="phoneImage" />+38 (063) 295-59-30</a>
-                            <a href="http.git.com" className="phone_link">Заказать обратный звонок</a>
+                            <a href="#h"><img src={phone} alt="phoneImage"/>+38 (063) 295-59-30</a>
+                            <a href="#h" className="phone_link" onClick={() => dispatch(openModal())}>Заказать обратный звонок</a>
                         </div>
                     </div>
 

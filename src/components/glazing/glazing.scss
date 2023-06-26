@@ -1,11 +1,10 @@
 .glazing {
     padding: 0 150px 50px 150px;
-    &_slider {
-        display: grid;
-        grid-template-columns: repeat(5, 200px);
-        justify-content: space-around;
+    h2 {
+        padding-top: 40px;
     }
     &_block {
+        display: inline-block;
         text-align: center;
         height: 220px;
         padding: 20px 0;
@@ -28,9 +27,9 @@
         }
         &_active {
             border-bottom: 10px solid #0089cd;
+            width: 220px; 
 			height: 220px;
 			padding: 20px 0;
-			// background: -webkit-gradient(linear, left top, left bottom, from(#ebebeb), color-stop(0%, #ebebeb), to(rgba(255, 255, 255, 0)));
 			background: linear-gradient(180deg, #ebebeb 0%, #ebebeb 0%, rgba(255, 255, 255, 0) 20%);
 			text-align: center;
             img {
@@ -122,7 +121,7 @@
         }
     }
     &_price {
-        padding: 0 6rem;
+        padding: 0 60px;
         p {
             display: inline-block;
             margin-right: 30px;
