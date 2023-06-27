@@ -3,6 +3,8 @@ import {useHttp} from '../../hooks/http.hook'; //для того чтобы де
 
 import { useDispatch } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
+import { Formik, Form, Field, ErrorMessage as FormikErrorMessage } from 'formik';
+import * as Yup from 'yup';
 
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css"; // Импорт стилей для слайдера
@@ -23,7 +25,6 @@ import calculatorStepTwoIconWarm from '../../assets/img/modal_calc/icon_warm.png
 
 import './calculator.scss';
 import './mediaCalculator.scss';
-// import { closeCalculator } from './calculatorSlice';
 import { clientsCreated } from '../formCard/formSlice';
 import { closeCalculator  } from '../../features/calculator/calculatorSlice';
 
@@ -33,12 +34,18 @@ import { closeCalculator  } from '../../features/calculator/calculatorSlice';
 const Calculator = () => {
     const [selectedImageIndex, setSelectedImageIndex] = useState(0);
     const [step, setStep] = useState(0);
+	const [prevStep, setPrevStep] = useState(0)
+	const [isColdChecked, setIsColdChecked] = useState(false);
+	const [isWarmChecked, setIsWarmChecked] = useState(false);
+	const [isFormSubmitted, setIsFormSubmitted] = useState(false);
 
 
-    const [windowType, setWindowType] = useState();
+
+
+    const [windowType, setWindowType] = useState(0);
     const [width, setWidth] = useState('');
     const [height, setHeight] = useState('');
-    const [glazingMaterial, setGlazingMaterial] = useState();
+    const [glazingMaterial, setGlazingMaterial] = useState("plastic");
     const [glazingProfile, setGlazingProfile] = useState();
     const [clientName, setClientName] = useState('');
 	const [clientPhone, setClientPhone] = useState('');
@@ -59,38 +66,62 @@ const Calculator = () => {
     };
 
     const handleNextButtonClick = () => {
+		setPrevStep(step);
         setStep(step => step + 1);
     }
+	const handlePrevButtonClick = () => {
+		setStep(step => step - 1);
+	};
 
-    const handleRequestAndNextStepButtonClick = (e) => {
+    const handleRequestAndNextStepButtonClick = (values) => {
         handleNextButtonClick();
-        onSubmitHandler(e);
+        onSubmitHandler(values);
     }
 
-    const onSubmitHandler = (e) => {
-		e.preventDefault();
+    const onSubmitHandler = (values) => {
         const newClient = {
 			id: uuidv4(),
             windowType: windowType,
-            width: width,
-            height: height,
+            width: values.width,
+            height: values.height,
             glazingMaterial: glazingMaterial,
             glazingProfile: glazingProfile,
-            name: clientName,
-            phone: clientPhone
+            name: values.clientName,
+            phone: values.clientPhone
         }
+		// formik.setFieldValue('isFormSubmitted', true);
         request("http://localhost:3001/clients", "POST", JSON.stringify(newClient))
             .then(res => console.log(res, 'Отправка успешна'))
             .then(dispatch(clientsCreated(newClient)))
             .catch(err => console.log(err));
         setWindowType()
-        setWidth('')
-        setHeight('')
+        values.setWidth('')
+        values.setHeight('')
         setGlazingMaterial()
         setGlazingProfile()
-		setClientName('')
-		setClientPhone('')
+		values.setClientName('')
+		values.setClientPhone('')
     }
+
+	const handleColdCheckboxChange = (event) => {
+		setIsColdChecked(event.target.checked);
+		if (event.target.checked) {
+			setGlazingProfile('Холодное');
+			setIsWarmChecked(false);
+		} else {
+			setGlazingProfile('');
+		}
+	};
+	
+	const handleWarmCheckboxChange = (event) => {
+		setIsWarmChecked(event.target.checked);
+		if (event.target.checked) {
+			setGlazingProfile('Теплое');
+			setIsColdChecked(false);
+		} else {
+			setGlazingProfile('');
+		}
+	};
 
     useEffect(() => {
         const handleKeyPress = (event) => {
@@ -119,7 +150,8 @@ const Calculator = () => {
 			  slidesToShow: 3,
 			  slidesToScroll: 3,
 			  infinite: true,
-			  dots: true
+			  dots: true,
+			  arrows : false
 			}
 		  },
 		  {
@@ -127,7 +159,8 @@ const Calculator = () => {
 			settings: {
 			  slidesToShow: 2,
 			  slidesToScroll: 2,
-			  initialSlide: 2
+			  initialSlide: 2,
+			  arrows : false
 			}
 		  },
 		  {
@@ -136,6 +169,7 @@ const Calculator = () => {
 			  slidesToShow: 1,
 			  slidesToScroll: 1,
 			  initialSlide: 0,
+			  arrows : false
 			}
 		  }
 		]
@@ -144,6 +178,30 @@ const Calculator = () => {
 
     return (
 			<div className="popup_calc open">
+				<Formik
+					initialValues={{
+						width: '',
+						height: '',
+						clientName: '',
+						clientPhone: '',
+						isFormSubmitted: false  
+					}}
+					validationSchema={Yup.object({
+						width: Yup.string()
+							.required('Обязательное поле!'),
+						height: Yup.string()
+							.required('Обязательное поле!'),
+						clientName: Yup.string()
+							.min(2, 'Минимум 2 символа для заполнения!')
+							.required('Обязательное поле!'),
+						clientPhone: Yup.string()
+							.matches(/^\d{5,}$/, 'Минимум 5 цифр')
+							.required('Обязательное поле!'),
+					})}
+					onSubmit={handleRequestAndNextStepButtonClick}
+					>
+				{formik => (
+				<Form>
 				<div className="popup_dialog">
 					<div className="popup_calc_content">
 						<button type="button" className="popup_calc_close" onClick={() => {dispatch(closeCalculator())}}>
@@ -174,20 +232,40 @@ const Calculator = () => {
 
 								<div className="popup_calc_content_form">
 									<div className="popup_calc_content_form_formControlWidth">
-										<input id="width" type="text" placeholder="Ширина" required onChange={(e) => setWidth(e.target.value)}/>
-										<label htmlFor="width">мм</label>
+										<Field 
+											id="width" 
+											type="text" 
+											placeholder="Ширина" 
+											name="width"
+											// onChange={(e) => setWidth(e.target.value)}
+											/>
+											<label htmlFor="width">мм</label>
+											{formik.touched.width && formik.errors.width && !isFormSubmitted && (
+												<div className='error'>{formik.errors.width}</div>
+											)}
 									</div>
 									<div className="popup_calc_content_form_multiplication">
 										<strong>&times;</strong>
 									</div>
 									<div className="popup_calc_content_form_formControlHeight">
-										<input id="height" type="text" placeholder="Высота" required onChange={(e) => setHeight(e.target.value)}/>
-										<label htmlFor="height">мм</label>
+										<Field 
+											id="height" 
+											name="height"
+											type="text" 
+											placeholder="Высота" 
+											// onChange={(e) => setHeight(e.target.value)}
+											/>
+											<label htmlFor="height">мм</label>
+											{formik.touched.height && formik.errors.height && !isFormSubmitted && (
+												<div className='error'>{formik.errors.height}</div>
+											)}
 									</div>
 								</div>
 
 								<div className="popup_calc_content_button">
-									<button className="button" onClick={handleNextButtonClick}>Далее</button>
+									<button 
+										className="button"
+										onClick={handleNextButtonClick}>Далее</button>
 								</div>
 							</>
 						)}
@@ -205,22 +283,18 @@ const Calculator = () => {
 								</select>
 
 								<div className="popup_calc_content_cold">
-									<div className="stepTwo_coldIcon">
+									<label>
 										<img src={calculatorStepTwoIconCold} alt="calculatorStepTwoIconCold" />
-									</div>
-										<label>
-											<input className="checkbox" type="checkbox" name="checkbox-test" onChange={(event) => setGlazingProfile(event.target.checked ? 'Холодное' : '')}/>
-											<span className="checkbox-custom" id="cold"></span>
-											<span className="label">Холодное</span>
-										</label>
+										<Field className="checkbox" type="checkbox" name="checkbox-test" checked={isColdChecked} onChange={handleColdCheckboxChange} />
+										<span className="checkbox-custom" id="cold"></span>
+										<span className="label">Холодное</span>
+									</label>
 								</div>
 									
 								<div className="popup_calc_content_warm">
-									<div className="stepTwo_warmIcon">
-										<img src={calculatorStepTwoIconWarm} alt="calculatorStepTwoIconWarm"/>
-									</div>
 									<label>
-										<input className="checkbox" type="checkbox" name="checkbox-test" onChange={(event) => setGlazingProfile(event.target.checked ? 'Теплое' : '')}/>
+										<img src={calculatorStepTwoIconWarm} alt="calculatorStepTwoIconWarm"/>
+										<Field className="checkbox" type="checkbox" name="checkbox-test" checked={isWarmChecked} onChange={handleWarmCheckboxChange}/>
 										<span className="checkbox-custom" id="warm"></span>
 										<span className="label">Теплое</span>
 									</label>
@@ -228,6 +302,7 @@ const Calculator = () => {
 
 								<div className="popup_calc_content_button">
 									<button className="button" onClick={handleNextButtonClick}>Далее</button>
+									<button className="prevButton" onClick={handlePrevButtonClick}>Назад</button>
 								</div>
 							</>
 						)}
@@ -235,15 +310,40 @@ const Calculator = () => {
 						{step === 2 && (
 							<>
 								<h3>Спасибо за обращение! <br/>Оставьте свои данные</h3>
-								<form className="popup_calc_forma" action="#">
-									<input className="popup_calc_form-control form_input" name="user_name" required type="text" placeholder="Введите ваше имя" onChange={(event) => setClientName(event.target.value)}/>
-									<input className="popup_calc_form-control form_input" name="user_phone" required type="text" placeholder="Введите телефон" onChange={(event) => setClientPhone(event.target.value)}/>
+								<div className="popup_calc_forma" action="#">
+									<Field 
+										id="clientName" 
+										className="popup_calc_form-control form_input" 
+										name="clientName" 
+										type="text" 
+										placeholder="Введите ваше имя" 
+										// onChange={(event) => setClientName(event.target.value)}
+										/>
+										{formik.touched.clientName && formik.errors.clientName && !isFormSubmitted && (
+											<div className='error'>{formik.errors.clientName}</div>
+										)}
+									<Field  
+										id="clientPhone" 
+										className="popup_calc_form-control form_input" 
+										name="clientPhone" 
+										type="text" 
+										placeholder="Введите телефон" 
+										// onChange={(event) => setClientPhone(event.target.value)}
+										/>
+										{formik.touched.clientPhone && formik.errors.clientPhone && !isFormSubmitted && (
+											<div className='error'>{formik.errors.clientPhone}</div>
+										)}
 									<p className="popup_calc_notice">Перезвоним в течение 10 минут</p>
-									{/* <p className="popup_calc_confidential">Ваши данные конфиденциальны</p> */}
-								</form>
+								</div>
 
 								<div className="popup_calc_content_button">
-									<button className="button" onClick={handleRequestAndNextStepButtonClick}>Рассчитать стоимость</button>
+									<button 
+										className="button"
+										type="submit" 
+										name="submit"
+										disabled={!formik.isValid || formik.isSubmitting} 
+										>Рассчитать стоимость</button>
+									<button className="prevButton" onClick={handlePrevButtonClick}>Назад</button>
 									<p className="form_notice">Ваши данные конфиденциальны</p>
 								</div>
 								
@@ -254,13 +354,18 @@ const Calculator = () => {
 							<>
 								<h3>Данные отправлены!<br/>Наш специалист свяжется с вами в течении 10 минут. </h3>
 								<div className="popup_calc_content_button">
-									<button className="button" onClick={() => {dispatch(closeCalculator())}}>Закрыть калькулятор</button>
+									<button
+										className="button" 
+										onClick={() => {dispatch(closeCalculator())}}>Закрыть калькулятор</button>
 								</div>
 							</>
 						)}
 						
 					</div>
 				</div>
+				</Form>
+				)}
+				</Formik>
 			</div>
     );
 };

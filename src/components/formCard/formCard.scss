@@ -8,21 +8,40 @@
     justify-content: center;
     grid-row: 1/3;
     grid-column: 2/3;
-    h2 {
-        margin-bottom: 15px;
-        font-size: 20px;
-        font-family: 'Open Sans', sans-serif;
-        font-weight: 700;
-        font-style: normal;
-        color: #333333;
-        line-height: 1.5;
-        span {
-                font-size: 24px;
-                text-transform: uppercase;
-        }
-    }
-    .error {
-        border: 2px solid red;
-    }
+    // h2 {
+    //     margin-bottom: 20px;
+    //     font-size: 20px;
+    //     font-family: 'Open Sans', sans-serif;
+    //     font-weight: 700;
+    //     font-style: normal;
+    //     color: #333333;
+    //     line-height: 1.5;
+    //     span {
+    //             font-size: 24px;
+    //             text-transform: uppercase;
+    //     }
+    // }
+    // input {
+    //     width: 100%;
+    //     height: 50px;
+    //     margin-top: 15px;
+    //     margin-bottom: 0;
+    //     padding: 5px 15px;
+    //     background: #fff;
+    //     border: 1px solid #e2e2e2;
+    //     color: #353535;
+    //     border-radius: 10px;
+    //     font-size: 22px;
+    //     &:focus {
+    //         outline: 1px solid #f57507;
+    //     }
+    // }
+    // .error {
+    //     display: flex;
+    //     color: #e53e3e;
+    //     margin-top: 8px;
+    //     font-size: 13px;
+    //     justify-content: start;
+    // }
 }
 

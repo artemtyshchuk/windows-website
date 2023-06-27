@@ -66,19 +66,22 @@
 @media (max-width: 576px) {
     .popup_calc {
         &_content {
-         grid-template-columns: 330px;
-         width: 300px;
-         position: relative; 
+            grid-template-columns: 330px;
+            width: 300px;
+            position: relative; 
             padding: 10px;
+        }
+        .form-control {
+            width: 280px;
         }
         &_close {
             margin-top: 50px;
             position: absolute;
-            bottom: -115%;
-            left: 50%;
+            top: -74.2px;
+            right: -22px;
             transform: translateX(-50%);
             font-size: 40px;
-            color: #ffffff;
+            color: black;
             border: none;
             background: transparent;
         }

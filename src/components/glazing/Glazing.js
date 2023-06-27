@@ -77,7 +77,6 @@ const Glazing = () => {
 			  slidesToShow: 1,
 			  slidesToScroll: 1,
 			  initialSlide: 0,
-			  className: '_active' 
 			}
 		  }
 		]
