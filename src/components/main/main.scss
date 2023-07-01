@@ -27,18 +27,20 @@
         row-gap: 13px;
     }
     &_features {
-        padding-left: 150px;
         padding: 0;
         display: grid;
-        grid-template-columns: repeat(4, auto);
+        height: 200px;
+        grid-template-columns: repeat(4, 105px);
         align-content: center;
         justify-content: space-around;
         &_block {
+                justify-content: center;
             text-align: center;
             img {
                 margin-top: 10px;
             }
             p {
+                width: 110px;
                 margin-top: -60px;
                 font-size: 13px;
                 line-height: 1.3;

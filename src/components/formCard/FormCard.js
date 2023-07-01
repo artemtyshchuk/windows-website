@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
 import { Formik, Form, Field, ErrorMessage as FormikErrorMessage } from 'formik';
 import * as Yup from 'yup';
+import { useTranslation } from 'react-i18next';
 
 import { clientsCreated } from './formSlice';
 import { closeModal } from '../../features/modal/modalSlice';
@@ -11,10 +12,13 @@ import './formCard.scss';
 import './mediaFormCard.scss';
 
 const FormCard = ({ modal_form, isModal }) => {
-  const [isFormSubmitted, setIsFormSubmitted] = useState(false);
 
-  const dispatch = useDispatch();
-  const { request } = useHttp();
+const [isFormSubmitted, setIsFormSubmitted] = useState(false);
+
+const { t } = useTranslation();
+
+const dispatch = useDispatch();
+const { request } = useHttp();
 
 const onSubmitHandler = (values) => {
     const newClient = {
@@ -23,9 +27,9 @@ const onSubmitHandler = (values) => {
       phone: values.clientPhone
     }
 
-    if (!values.clientName || !values.clientPhone) {
-      return alert('Заполните поля для отправки!');
-    }
+    // if (!values.clientName || !values.clientPhone) {
+    //   return alert('Заполните поля для отправки!');
+    // }
 
     if (isModal) {
       dispatch(closeModal());
@@ -84,8 +88,8 @@ const onSubmitHandler = (values) => {
               </button>
             )}
             <h2>
-              Запишитесь сегодня на <br />
-              <span>бесплатный замер</span>
+              {t('sign_up_for_a_free')} <br />
+              <span>{t('measurement_today')}</span>
             </h2>
             <div className="main__search-wrapper">
               <Field
@@ -93,7 +97,7 @@ const onSubmitHandler = (values) => {
                 id="clientName"
                 type="text"
                 name="clientName"
-                placeholder="Введите ваше имя"
+                placeholder={t('enter_your_name')}
               />
               {formik.touched.clientName && formik.errors.clientName && !isFormSubmitted && (
                 <div className='error'>{formik.errors.clientName}</div>
@@ -104,7 +108,7 @@ const onSubmitHandler = (values) => {
                 id="clientPhone"
                 type="number"
                 name="clientPhone"
-                placeholder="Введите телефон"
+                placeholder={t('enter_your_phone')}
               />
               {formik.touched.clientPhone && formik.errors.clientPhone && !isFormSubmitted && (
                 <div className='error'>{formik.errors.clientPhone}</div>
@@ -114,10 +118,10 @@ const onSubmitHandler = (values) => {
                 type="submit"
                 className="text-uppercase btn-block button"
                 name="submit"
-				disabled={!formik.isValid || formik.isSubmitting}>
-                Вызвать замерщика!
+				        disabled={!formik.isValid || formik.isSubmitting}>
+                {t('call_a_measuring_engineer')}
               </button>
-              <p className="form_notice">Ваши данные конфиденциальны</p>
+              <p className="form_notice">{t('your_information_is_private')}</p>
             </div>
           </Form>
         )}

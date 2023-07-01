@@ -1,5 +1,5 @@
+import React from 'react';              //Так должен выглядеть index.js
 import { useSelector } from 'react-redux';
-
 
 import Header from '../header/Header';
 import Main from '../main/Main';

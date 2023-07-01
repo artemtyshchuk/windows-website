@@ -14,8 +14,9 @@
             margin-bottom: 20px;
         }
         a {
-            font-size: 18px;
+            font-size: 16px;
             font-weight: 600;
+            text-transform: uppercase;
             text-decoration: none;
             &:focus {
                 text-decoration: none;
@@ -30,6 +31,7 @@
             width: 220px; 
 			height: 220px;
 			padding: 20px 0;
+            text-transform: uppercase;
 			background: linear-gradient(180deg, #ebebeb 0%, #ebebeb 0%, rgba(255, 255, 255, 0) 20%);
 			text-align: center;
             img {
