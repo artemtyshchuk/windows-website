@@ -1,34 +1,127 @@
 {
-    "glazing_of_balconies_and_loggias_in_Kyiv": "Glazing of balconies and loggias in Kyiv and Kyiv region",
-    "call_a_measurer": "Call a measurer",
-    "without_a_holiday": "seven days a week",
-    "book_a_consultation": "Book a consultation",
-    "balcony_glazing": "Balcony Glazing",
-    "for_12_800_hryvnia": "for 12 800 hryvnia!",
-    "high_quality": "High quality",
-    "quick_installation": "Quick installation",
-    "warranty_3_years": "Warranty 3 years",
-    "garbage_removal": "Garbage removal",
-    "sign_up_for_a_free": "Sign up for a free",
-    "measurement_today": "measurement today",
-    "enter_your_name": "Enter your name",
-    "enter_your_phone": "Enter your phone number",
-    "call_a_measuring_engineer": "Call a measuring engineer!",
-    "your_information_is_private": "Your information is private",
-    "glazing_balconies_and_loggias": "Glazing balconies and loggias",
-    "glazing": "Glazing",
-    "wooden": "wooden",
-    "aluminum": "aluminum",
-    "plastic": "plastic",
-    "french": "french",
-    "outboard": "outboard",
-    "cold": "Cold",
-    "warm": "Warm",
-    "thermal_insulation": "Thermal Insulation",
-    "sound_insulation": "Sound insulation",
+    "header": {
+        "glazing_of_balconies_and_loggias_in_Kyiv": "Glazing of balconies and loggias in Kyiv and Kyiv region",
+        "call_a_measurer": "Call a measurer",
+        "without_a_holiday": "seven days a week",
+        "book_a_consultation": "Book a consultation"
+    },
+    "main": {
+        "balcony_glazing": "Balcony Glazing",
+        "for_12_800_hryvnia": "for 12 800 hryvnia!",
+        "high_quality": "High quality",
+        "quick_installation": "Quick installation",
+        "warranty_3_years": "Warranty 3 years",
+        "garbage_removal": "Garbage removal"
+    },
+    "formCard": {
+        "sign_up_for_a_free": "Sign up for a free",
+        "measurement_today": "measurement today",
+        "enter_your_name": "Enter your name",
+        "enter_your_phone": "Enter your phone number",
+        "call_a_measuring_engineer": "Call a measuring engineer!",
+        "your_information_is_private": "Your information is private",
+        "data_not_sent_try_again_later": "Data not sent, try again later!",
+        "close": "Close",
+        "data_sent_successfully": "Data sent successfully!"
+    },
+    "glazing": {
+        "glazing_balconies_and_loggias": "Glazing balconies and loggias",
+        "glazing": "Glazing",
+        "wooden": "wooden",
+        "aluminum": "aluminum",
+        "plastic": "plastic",
+        "french": "french",
+        "outboard": "outboard",
+        "cold": "Cold",
+        "warm": "Warm",
+        "structural_thickness": "Structural thickness:",
+        "thermal_insulation": "Thermal Insulation",
+        "sound_insulation": "Sound insulation",
+        "turnkey_installation": "turnkey installation",
+        "calculate_the_cost": "Calculate the cost",
+        "wood_cold_thickness_data": "Structural thickness: 42-58 mm",
+        "wood_cold_glazing_data": "polished glass (4 - 5 mm thick)",
+        "wood_cold_soundproofing_data": "20-27 dB"
+    },
+    "calculator": {
+        "calculator": "Calculator",
+        "choose_the_shape_of_your_balcony": "Choose the shape of your balcony",
+        "and_specify_the_dimensions": "and specify the dimensions",
+        "width": "Width",
+        "mm": "mm",
+        "height": "Height",
+        "next": "Next",
+        "choose_the_type_of_glazing": "Choose the type of glazing",
+        "and_his_profile": "and his profile",
+        "wooden_glazing": "Wooden glazing",
+        "aluminum_glazing": "Aluminum glazing",
+        "glazing_with_plastic_frames": "Glazing with plastic frames",
+        "panoramic_glazing": "Panoramic glazing",
+        "glazing_with_a_bow": "Glazing with a bow",
+        "cold": "Cold",
+        "warm": "Warm",
+        "back": "Back",
+        "thank_you_for_contacting_us": "Thank you for contacting us!",
+        "leave_your_contact_info": "Leave your contact info",
+        "enter_your_name": "Enter your name",
+        "enter_your_phone": "Enter your phone number",
+        "we_will_contact_in_10_minutes": "We will contact in 10 minutes",
+        "call_you_back_in_10_minutes": "Our specialist will contact you in 10 minutes",
+        "calculate_the_cost": "Calculate the cost",
+        "your_information_is_private": "Your information is private",
+        "data_sent": "Data sent!",
+        "close_the_calculator": "Close the calculator"
+    },
     "UAH_sq_m_": "UAH sq.m.",
-    "turnkey_installation": "turnkey installation",
-    "calculate_the_cost": "Calculate the cost"
+    "decoration": {
+        "order": "ORDER BALCONY FINISHING WITH A 60% DISCOUNT!",
+        "interior_trim": "Interior trim",
+        "exterior_finish": "Exterior finish",
+        "external_glazing": "External glazing",
+        "balcony_roof": "Balcony roof",
+        "with_material": "with material"
+    },
+    "works": {
+        "our_works": "Our works"
+    },
+    "guarantees": {
+        "we_guarantee_you": "we guarantee you",
+        "high_quality": "High quality",
+        "turnkey_work": "Turnkey work",
+        "short_time_installation": "Short time installation",
+        "manufacturer_prices": "Manufacturer prices",
+        "measuring_and_consultation_for_free": "Measuring and consultation for free",
+        "warmth_and_comfort_on_the_balcony": "Warmth and comfort on the balcony"
+    },
+    "payment": {
+        "you_can_pay_for_our_services": "You can pay for our services",
+        "in_cash": "In cash",
+        "by_credit_card": "By credit card",
+        "cashless_payment": "Cashless payment"
+    },
+    "promotion": {
+        "promotion_60": "Promotion - 60%",
+        "save_money_on_glazing": "Save money on glazing!",
+        "only_till_December_18": "Only till December 18",
+        "before_the_end": "BEFORE THE END",
+        "days": "Days",
+        "hours": "Hours",
+        "minutes": "Minutes",
+        "seconds": "Seconds"
+    },
+    "contacts": {
+        "how_to_find_us": "How to find us",
+        "first_adress": "Registered address:",
+        "first_subadress": "\"IRVAS\" LLC, 125 Vesnyana St., Kiev, 127411",
+        "second_adress": "Actual address:",
+        "second_subadress": "\"IRVAS\" LLC, 141031, Kiev region, Kiev district, Vereshki village, Pervozvannogo str. 53",
+        "phone": "Phone:",
+        "work_schedule": "Work schedule",
+        "seven_days_a_week": "9:00 - 18:00, seven days a week"
 
-
+    },
+    "feedback": {
+        "any_questions": "Any questions?",
+        "ask_our_specialist": "Ask our specialist!"
+    }
 }

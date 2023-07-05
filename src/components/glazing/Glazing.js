@@ -1,4 +1,4 @@
-import { useState, useCallback, useRef } from 'react';
+import { useState, useCallback, useRef, Suspense } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useDispatch } from 'react-redux';
 import { motion } from 'framer-motion';
@@ -13,7 +13,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css"; // Импорт стилей для слайдера
 import "slick-carousel/slick/slick-theme.css"; // Импорт темы для слайдера
 
-
+import Spinner from '../spinner/Spinner';
 import './glazing.scss';
 import './mediaGlazing.scss';
 
@@ -23,6 +23,10 @@ import { openCalculator } from '../../features/calculator/calculatorSlice';
 
 
 const Glazing = () => {
+
+
+	
+
 	const [selectedData, setSelectedData] = useState({
 		cold: dataGlazing[0].wood[0].cold[0],
 		warm: dataGlazing[0].wood[0].warm[0],
@@ -50,7 +54,7 @@ const Glazing = () => {
 		divRef.current = currentElement;
 
 		console.log(1);
-	}, [setSelectedData]);
+	}, [setActiveDiv, setSelectedData]);
 
 	const settings = {
 		dots: true,
@@ -87,94 +91,137 @@ const Glazing = () => {
 		]
 	};
 
+	const topAnimation = {
+		hidden: {
+			y: 100,
+			opacity: 0,
+		},
+		visible: custom => ({
+			y: 0,
+			opacity: 1,
+			transition: {delay: custom * 0.2},
+		}),
+	}
+
+	const lineAnimation = {
+		hidden: {
+			y: 100,
+			opacity: 0,
+		},
+		visible: custom => ({
+			y: 0,
+			opacity: 1,
+			transition: {delay: custom * 0.2},
+		}),
+	}
+
 
 	return (
-		<div className="glazing">
+		<motion.div 
+			className="glazing"
+			initial="hidden"
+			whileInView="visible"
+			viewport={{ amount: 0.1 }}>
 			<div className="container">
 				<div className="section_header">
-					<h2>{t('glazing_balconies_and_loggias')}</h2>
+					<motion.h2 custom={1} variants={topAnimation}>{t('glazing.glazing_balconies_and_loggias')}</motion.h2>
 					<div className="section_header_sub"></div>
 				</div>
-				<div className="glazing_slider">
+				<motion.div
+					initial="hidden"
+					whileInView="visible"
+					viewport={{ amount: 0.2 }} 
+					className="glazing_slider">
 				<Slider {...settings}>
-					<div
+					<motion.div
+						custom={1} 
+						variants={lineAnimation}
 						className={`glazing_block${activeDiv === 0 ? '_active' : ''}`}
 						onClick={(event) => handleClick(dataGlazing[0].wood[0], event, 0)}>
 						<img src={first} alt="firstIcon" />
 						<a className="tree_link" href="#g">
-						{t('wooden')} <br/>
-							{t('glazing')}
+						{t('glazing.wooden')} <br/>
+							{t('glazing.glazing')}
 						</a>
-					</div>
+					</motion.div>
 				
 
-					<div
+					<motion.div
+						custom={2} 
+						variants={lineAnimation}
 						className={`glazing_block${activeDiv === 1 ? '_active' : ''}`}
 						onClick={(event) => handleClick(dataGlazing[0].aluminum[0], event, 1)}
 					>
 						<img src={second} alt="secondIcon" />
 						<a className="aluminum_link" href="#g">
-						{t('aluminum')} <br />
-							{t('glazing')}
+						{t('glazing.aluminum')} <br />
+							{t('glazing.glazing')}
 						</a>
-					</div>
+					</motion.div>
 
-					<div
+					<motion.div
+						custom={3} 
+						variants={lineAnimation}
 						className={`glazing_block${activeDiv === 2 ? '_active' : ''}`}
 						onClick={(event) => handleClick(dataGlazing[0].plastic[0], event, 2)}
 					>
 						<img src={third} alt="thirdIcon" />
 						<a className="plastic_link" href="#g">
-						{t('plastic')} <br />
-							{t('glazing')}
+						{t('glazing.plastic')} <br />
+							{t('glazing.glazing')}
 						</a>
-					</div>
+					</motion.div>
 
-					<div
+					<motion.div
+						custom={4} 
+						variants={lineAnimation}
 						className={`glazing_block${activeDiv === 3 ? '_active' : ''}`}
 						onClick={(event) => handleClick(dataGlazing[0].french[0], event, 3)}
 					>
 						<img src={forth} alt="forthIcon" />
 						<a className="french_link" href="#g">
-						{t('french')} <br />
-							{t('glazing')}
+						{t('glazing.french')} <br />
+							{t('glazing.glazing')}
 						</a>
-					</div>
+					</motion.div>
 
-					<div
+					<motion.div
+						custom={5} 
+						variants={lineAnimation}
 						className={`glazing_block${activeDiv === 4 ? '_active' : ''}`}
 						onClick={(event) => handleClick(dataGlazing[0].rise[0], event, 4)}
 					>
 						<img src={fifth} alt="fifthIcon" />
 						<a className="rise_link" href="#g">
-						{t('glazing')} <br />
-						{t('outboard')}
+						{t('glazing.glazing')} <br />
+						{t('glazing.outboard')}
 						</a>
-					</div>
+					</motion.div>
 				</Slider>
-				</div>
+				</motion.div>
 
 				<div className="glazing_content">
 					<motion.div className="glazing_card" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1 }}>
 						<div className="glazing_card">
 							<div className="glazing_cold">
-								<h3>{t('cold')}</h3>
+								<h3>{t('glazing.cold')}</h3>
+								{/* <Suspense fallback={<Spinner/>} ></Suspense> */}
 								<img src={selectedData.cold.image} alt="coldImage"></img>
 								<ul>
-									<li>{selectedData.cold.thickness}</li>
-									<li>{t('glazing')}: {selectedData.cold.glazing}</li>
-									<li>{t('thermal_insulation')}: {selectedData.cold.thermalInsulation} м<sup>2</sup></li>
-									<li>{t('sound_insulation')}: {selectedData.cold.soundproofing}</li>
+									<li>{t('glazing.structural_thickness')} {selectedData.cold.thickness}</li>
+									<li>{t('glazing.glazing')}: {selectedData.cold.glazing}</li>
+									<li>{t('glazing.thermal_insulation')}: {selectedData.cold.thermalInsulation} m.<sup>2</sup></li>
+									<li>{t('glazing.sound_insulation')}: {selectedData.cold.soundproofing}</li>
 								</ul>
 							</div>
 							<div className="glazing_price">
 								<p>
 									{selectedData.cold.price} {t('UAH_sq_m_')}
 									<br />
-									<span>{t('turnkey_installation')}</span>
+									<span>{t('glazing.turnkey_installation')}</span>
 								</p>
 								<button className="button glazing_price_btn text-uppercase popup_calc_btn" onClick={() => dispatch(openCalculator())}>
-								{t('calculate_the_cost')}
+								{t('glazing.calculate_the_cost')}
 								</button>
 							</div>
 						</div>
@@ -182,30 +229,30 @@ const Glazing = () => {
 					<motion.div className="glazing_card" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1 }}>
 						<div className="glazing_card">
 							<div className="glazing_warm">
-								<h3>{t('warm')}</h3>
+								<h3>{t('glazing.warm')}</h3>
 								<img src={selectedData.warm.image} alt="coldImage"></img>
 								<ul>
-									<li>{selectedData.warm.thickness}</li>
-									<li>{t('glazing')}: {selectedData.warm.glazing}</li>
-									<li>{t('thermal_insulation')}: {selectedData.warm.thermalInsulation} м<sup>2</sup></li>
-									<li>{t('sound_insulation')}: {selectedData.warm.soundproofing}</li>
+									<li>{t('glazing.structural_thickness')} {selectedData.warm.thickness}</li>
+									<li>{t('glazing.glazing')}: {selectedData.warm.glazing}</li>
+									<li>{t('glazing.thermal_insulation')}: {selectedData.warm.thermalInsulation} m.<sup>2</sup></li>
+									<li>{t('glazing.sound_insulation')}: {selectedData.warm.soundproofing}</li>
 								</ul>
 							</div>
 							<div className="glazing_price">
 								<p>
 									{selectedData.warm.price} {t('UAH_sq_m_')}
 									<br />
-									<span>{t('turnkey_installation')}</span>
+									<span>{t('glazing.turnkey_installation')}</span>
 								</p>
 								<button className="button glazing_price_btn text-uppercase popup_calc_btn" onClick={() => dispatch(openCalculator())}>
-								{t('calculate_the_cost')}
+								{t('glazing.calculate_the_cost')}
 								</button>
 							</div>
 						</div>
 					</motion.div>
 				</div>
 			</div>
-		</div>
+		</motion.div>
 	);
 };
 

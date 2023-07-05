@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import FormCard from '../formCard/FormCard';
 
@@ -13,6 +14,9 @@ const Promotion = () => {
         minutes: '00',
         seconds: '00'
     });
+
+    const { t } = useTranslation();
+
 
     useEffect(() => {
         const targetDate = new Date('December 31, 2023 23:59:59').getTime();
@@ -45,15 +49,15 @@ const Promotion = () => {
         <div className="sale">
             <div className="sale_wrapper">
 
-                <h2 className="sale_title">Акция - 60%</h2>
-                <p className="sale_subtitle">Успей сэкономить на остеклении!<br/> Только до 18 декабря!</p>
+                <h2 className="sale_title">{t('promotion.promotion_60')}</h2>
+                <p className="sale_subtitle">{t('promotion.save_money_on_glazing')}<br/> {t('promotion.only_till_December_18')}</p>
                 <div className="timer1" id="timer">
-                    <h4>ДО ЗАВЕРШЕНИЯ АКЦИИ:</h4>
+                    <h4>{t('promotion.before_the_end')}</h4>
                     <div className="container1">
-                            <div className="numbers1"><div><span id="days">{timeLeft.days}</span></div><div className="description1">Дней</div></div>
-                            <div className="numbers1"><div><span id="hours">{timeLeft.hours}</span></div><div className="description1">Часов</div></div>
-                            <div className="numbers1"><div><span id="minutes">{timeLeft.minutes}</span></div><div className="description1">Минут</div></div>
-                            <div className="numbers1"><div><span id="seconds">{timeLeft.seconds}</span></div><div className="description1">Секунд</div></div>      
+                            <div className="numbers1"><div><span id="days">{timeLeft.days}</span></div><div className="description1">{t('promotion.days')}</div></div>
+                            <div className="numbers1"><div><span id="hours">{timeLeft.hours}</span></div><div className="description1">{t('promotion.hours')}</div></div>
+                            <div className="numbers1"><div><span id="minutes">{timeLeft.minutes}</span></div><div className="description1">{t('promotion.minutes')}</div></div>
+                            <div className="numbers1"><div><span id="seconds">{timeLeft.seconds}</span></div><div className="description1">{t('promotion.seconds')}</div></div>      
                     </div>
                 </div>
 

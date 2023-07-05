@@ -5,6 +5,7 @@ import { useDispatch } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
 import { Formik, Form, Field, ErrorMessage as FormikErrorMessage } from 'formik';
 import * as Yup from 'yup';
+import { useTranslation } from 'react-i18next';
 
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css"; // Импорт стилей для слайдера
@@ -23,6 +24,9 @@ import largeImageOfWindow4 from '../../assets/img/modal_calc/balkon/type4.png';
 import calculatorStepTwoIconCold from '../../assets/img/modal_calc/icon_cold.png'
 import calculatorStepTwoIconWarm from '../../assets/img/modal_calc/icon_warm.png'
 
+import Spinner from '../spinner/Spinner';
+import ErrorMessage from '../errorMessage/ErrorMessage';
+
 import './calculator.scss';
 import './mediaCalculator.scss';
 import { clientsCreated } from '../formCard/formSlice';
@@ -39,7 +43,8 @@ const Calculator = () => {
 	const [isWarmChecked, setIsWarmChecked] = useState(false);
 	const [isFormSubmitted, setIsFormSubmitted] = useState(false);
 
-
+	const [isSubmitting, setIsSubmitting] = useState(false);
+	const [error, setError] = useState(null);
 
 
     const [windowType, setWindowType] = useState(0);
@@ -52,6 +57,8 @@ const Calculator = () => {
 
     const dispatch = useDispatch();
     const {request} = useHttp();
+	const { t } = useTranslation();
+
 
     const images = [
         { thumbnail: typeOfWindow1, largeImage: largeImageOfWindow1 },
@@ -91,9 +98,20 @@ const Calculator = () => {
         }
 		// formik.setFieldValue('isFormSubmitted', true);
         request("http://localhost:3001/clients", "POST", JSON.stringify(newClient))
-            .then(res => console.log(res, 'Отправка успешна'))
-            .then(dispatch(clientsCreated(newClient)))
-            .catch(err => console.log(err));
+            .then(res => {
+				console.log(res, 'Отправка успешна');
+				setIsFormSubmitted(true);
+				setIsSubmitting(false);
+			})
+            .then(() => {
+				dispatch(clientsCreated(newClient));
+				setIsFormSubmitted(false);;
+			})
+            .catch(err => {
+				console.log(err);
+				setError(err);
+				setIsSubmitting(false);
+			});
         setWindowType()
         values.setWidth('')
         values.setHeight('')
@@ -178,6 +196,13 @@ const Calculator = () => {
 
     return (
 			<div className="popup_calc open">
+				{isFormSubmitted ? (
+					<Spinner/>
+				) : isSubmitting ? (
+					<Spinner/>
+				): error ? (
+					<ErrorMessage error={error}/>
+				) : (
 				<Formik
 					initialValues={{
 						width: '',
@@ -188,15 +213,15 @@ const Calculator = () => {
 					}}
 					validationSchema={Yup.object({
 						width: Yup.string()
-							.required('Обязательное поле!'),
+							.required('Required field!'),
 						height: Yup.string()
-							.required('Обязательное поле!'),
+							.required('Required field!'),
 						clientName: Yup.string()
-							.min(2, 'Минимум 2 символа для заполнения!')
-							.required('Обязательное поле!'),
+							.min(2, 'At least 2 characters!')
+							.required('Required field!'),
 						clientPhone: Yup.string()
-							.matches(/^\d{5,}$/, 'Минимум 5 цифр')
-							.required('Обязательное поле!'),
+							.matches(/^\d{5,}$/, 'At least 5 digits!')
+							.required('Required field!'),
 					})}
 					onSubmit={handleRequestAndNextStepButtonClick}
 					>
@@ -207,10 +232,10 @@ const Calculator = () => {
 						<button type="button" className="popup_calc_close" onClick={() => {dispatch(closeCalculator())}}>
 							<strong>&times;</strong>
 						</button>
-						<h2>Калькулятор</h2>
+						<h2>{t('calculator.calculator')}</h2>
 						{step === 0 && (
 							<>
-								<h3>Выберите форму балкона<br />и укажите размеры</h3>
+								<h3>{t('calculator.choose_the_shape_of_your_balcony')}<br />{t('calculator.and_specify_the_dimensions')}</h3>
 								<div className="balcon_icons">
 								<Slider {...settings}>
 									{images.map((image, index) => (
@@ -235,11 +260,10 @@ const Calculator = () => {
 										<Field 
 											id="width" 
 											type="text" 
-											placeholder="Ширина" 
+											placeholder={t('calculator.width')}
 											name="width"
-											// onChange={(e) => setWidth(e.target.value)}
 											/>
-											<label htmlFor="width">мм</label>
+											<label htmlFor="width">{t('calculator.mm')}</label>
 											{formik.touched.width && formik.errors.width && !isFormSubmitted && (
 												<div className='error'>{formik.errors.width}</div>
 											)}
@@ -252,10 +276,9 @@ const Calculator = () => {
 											id="height" 
 											name="height"
 											type="text" 
-											placeholder="Высота" 
-											// onChange={(e) => setHeight(e.target.value)}
+											placeholder={t('calculator.height')} 
 											/>
-											<label htmlFor="height">мм</label>
+											<label htmlFor="height">{t('calculator.mm')}</label>
 											{formik.touched.height && formik.errors.height && !isFormSubmitted && (
 												<div className='error'>{formik.errors.height}</div>
 											)}
@@ -265,21 +288,21 @@ const Calculator = () => {
 								<div className="popup_calc_content_button">
 									<button 
 										className="button"
-										onClick={handleNextButtonClick}>Далее</button>
+										onClick={handleNextButtonClick}>{t('calculator.next')}</button>
 								</div>
 							</>
 						)}
 
 						{step === 1 && (
 							<>
-								<h3>Выберите тип остекления<br />и его профиль</h3>
+								<h3>{t('calculator.choose_the_type_of_glazing')}<br />{t('calculator.and_his_profile')}</h3>
 				
 								<select className="form-control" name="view" id="view_type" onChange={(event) => setGlazingMaterial(event.target.value)}>
-									<option value="wood">Деревянное остекление</option>
-									<option value="aluminum">Алюминиевое остекление</option>
-									<option value="plastic">Остекление пластиковыми рамами</option>
-									<option value="french">Панорамное остекление</option>
-									<option value="overhang">Остекление с выносом</option>
+									<option value="wood">{t('calculator.wooden_glazing')}</option>
+									<option value="aluminum">{t('calculator.aluminum_glazing')}</option>
+									<option value="plastic">{t('calculator.glazing_with_plastic_frames')}</option>
+									<option value="french">{t('calculator.panoramic_glazing')}</option>
+									<option value="overhang">{t('calculator.glazing_with_a_bow')}</option>
 								</select>
 
 								<div className="popup_calc_content_cold">
@@ -287,7 +310,7 @@ const Calculator = () => {
 										<img src={calculatorStepTwoIconCold} alt="calculatorStepTwoIconCold" />
 										<Field className="checkbox" type="checkbox" name="checkbox-test" checked={isColdChecked} onChange={handleColdCheckboxChange} />
 										<span className="checkbox-custom" id="cold"></span>
-										<span className="label">Холодное</span>
+										<span className="label">{t('calculator.cold')}</span>
 									</label>
 								</div>
 									
@@ -296,28 +319,27 @@ const Calculator = () => {
 										<img src={calculatorStepTwoIconWarm} alt="calculatorStepTwoIconWarm"/>
 										<Field className="checkbox" type="checkbox" name="checkbox-test" checked={isWarmChecked} onChange={handleWarmCheckboxChange}/>
 										<span className="checkbox-custom" id="warm"></span>
-										<span className="label">Теплое</span>
+										<span className="label">{t('calculator.warm')}</span>
 									</label>
 								</div>
 
 								<div className="popup_calc_content_button">
-									<button className="button" onClick={handleNextButtonClick}>Далее</button>
-									<button className="prevButton" onClick={handlePrevButtonClick}>Назад</button>
+									<button className="button" onClick={handleNextButtonClick}>{t('calculator.next')}</button>
+									<button className="prevButton" onClick={handlePrevButtonClick}>{t('calculator.back')}</button>
 								</div>
 							</>
 						)}
 
 						{step === 2 && (
 							<>
-								<h3>Спасибо за обращение! <br/>Оставьте свои данные</h3>
+								<h3>{t('calculator.thank_you_for_contacting_us')} <br/>{t('calculator.leave_your_contact_info')}</h3>
 								<div className="popup_calc_forma" action="#">
 									<Field 
 										id="clientName" 
 										className="popup_calc_form-control form_input" 
 										name="clientName" 
 										type="text" 
-										placeholder="Введите ваше имя" 
-										// onChange={(event) => setClientName(event.target.value)}
+										placeholder={t('calculator.enter_your_name')}
 										/>
 										{formik.touched.clientName && formik.errors.clientName && !isFormSubmitted && (
 											<div className='error'>{formik.errors.clientName}</div>
@@ -327,13 +349,12 @@ const Calculator = () => {
 										className="popup_calc_form-control form_input" 
 										name="clientPhone" 
 										type="text" 
-										placeholder="Введите телефон" 
-										// onChange={(event) => setClientPhone(event.target.value)}
+										placeholder={t('calculator.enter_your_phone')}
 										/>
 										{formik.touched.clientPhone && formik.errors.clientPhone && !isFormSubmitted && (
 											<div className='error'>{formik.errors.clientPhone}</div>
 										)}
-									<p className="popup_calc_notice">Перезвоним в течение 10 минут</p>
+									<p className="popup_calc_notice">{t('calculator.we_will_contact_in_10_minutes')}</p>
 								</div>
 
 								<div className="popup_calc_content_button">
@@ -342,9 +363,9 @@ const Calculator = () => {
 										type="submit" 
 										name="submit"
 										disabled={!formik.isValid || formik.isSubmitting} 
-										>Рассчитать стоимость</button>
-									<button className="prevButton" onClick={handlePrevButtonClick}>Назад</button>
-									<p className="form_notice">Ваши данные конфиденциальны</p>
+										>{t('calculator.calculate_the_cost')}</button>
+									<button className="prevButton" onClick={handlePrevButtonClick}>{t('calculator.back')}</button>
+									<p className="form_notice">{t('calculator.your_information_is_private')}</p>
 								</div>
 								
 							</>
@@ -352,11 +373,12 @@ const Calculator = () => {
 
 						{step === 3 && (
 							<>
-								<h3>Данные отправлены!<br/>Наш специалист свяжется с вами в течении 10 минут. </h3>
+								<h3>{t('calculator.data_sent')}<br/>{t('calculator.call_you_back_in_10_minutes')}</h3>
 								<div className="popup_calc_content_button">
 									<button
 										className="button" 
-										onClick={() => {dispatch(closeCalculator())}}>Закрыть калькулятор</button>
+										onClick={() => {dispatch(closeCalculator())}}>{t('calculator.close_the_calculator')}
+									</button>
 								</div>
 							</>
 						)}
@@ -366,6 +388,7 @@ const Calculator = () => {
 				</Form>
 				)}
 				</Formik>
+				)}
 			</div>
     );
 };

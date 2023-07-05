@@ -1,34 +1,131 @@
 {
-    "glazing_of_balconies_and_loggias_in_Kyiv": "Przeszklenia balkonów i loggii w Kijowie i obwodzie kijowskim",
-    "call_a_measurer": "Wezwij mierniczego",
-    "without_a_holiday": "siedem dni w tygodniu",
-    "book_a_consultation": "Zamów konsultację",
-    "balcony_glazing": "Przeszklenie balkonu",
-    "for_12_800_hryvnia": "za 12 800 hrywien",
-    "high_quality": "Wysoka jakość",
-    "quick_installation": "Szybka instalacja",
-    "warranty_3_years": "Gwarancja 3 lata",
-    "garbage_removal": "Wywóz śmieci",
-    "sign_up_for_a_free": "Zapisz się już dziś na",
-    "measurement_today": "bezpłatny pomiar",
-    "enter_your_name": "Wprowadź swoje imię",
-    "enter_your_phone": "Wprowadź swój numer telefonu",
-    "call_a_measuring_engineer": "Wezwij specjalistę!",
-    "your_information_is_private": "Twoje dane są poufne",
-    "glazing_balconies_and_loggias": "Przeszklenia balkonów i loggii",
-    "glazing": "Oszklenie",
-    "wooden": "Drewniane",
-    "aluminum": "Aluminiowe",
-    "plastic": "Plastikowe",
-    "french": "Francuskie",
-    "outboard": "zewnętrzne",
-    "cold": "Zimne",
-    "warm": "Ciepłe",
-    "thermal_insulation": "Izolacja termiczna",
-    "sound_insulation": "Izolacja akustyczna",
+    "header": {
+        "glazing_of_balconies_and_loggias_in_Kyiv": "Przeszklenia balkonów i loggii w Kijowie i obwodzie kijowskim",
+        "call_a_measurer": "Wezwij mierniczego",
+        "without_a_holiday": "siedem dni w tygodniu",
+        "book_a_consultation": "Zamów konsultację"
+    },
+    "main": {
+        "balcony_glazing": "Przeszklenie balkonu",
+        "for_12_800_hryvnia": "za 12 800 hrywien",
+        "high_quality": "Wysoka jakość",
+        "quick_installation": "Szybka instalacja",
+        "warranty_3_years": "Gwarancja 3 lata",
+        "garbage_removal": "Wywóz śmieci"
+    },
+    "formCard": {
+        "sign_up_for_a_free": "Zapisz się już dziś na",
+        "measurement_today": "bezpłatny pomiar",
+        "enter_your_name": "Wprowadź swoje imię",
+        "enter_your_phone": "Wprowadź swój numer telefonu",
+        "call_a_measuring_engineer": "Wezwij specjalistę!",
+        "your_information_is_private": "Twoje dane są poufne",
+        "data_not_sent_try_again_later": "Dane nie zostały wysłane, spróbuj ponownie później!",
+        "close": "Zamknąć",
+        "data_sent_successfully": "Dane wysłane pomyślnie!"
+
+
+
+    },
+    "glazing": {
+        "glazing_balconies_and_loggias": "Przeszklenia balkonów i loggii",
+        "glazing": "Oszklenie",
+        "wooden": "Drewniane",
+        "aluminum": "Aluminiowe",
+        "plastic": "Plastikowe",
+        "french": "Francuskie",
+        "outboard": "zewnętrzne",
+        "cold": "Zimne",
+        "warm": "Ciepłe",
+        "structural_thickness": "Grubość konstrukcji:",
+        "thermal_insulation": "Izolacja termiczna",
+        "sound_insulation": "Izolacja akustyczna",
+        "turnkey_installation": "instalacja \"pod klucz\"",
+        "calculate_the_cost": "Oblicz koszt",
+        "wood_cold_thickness_data": "Grubość strukturalna: 42-58 mm",
+        "wood_cold_glazing_data": "polerowane szkło (grubość 4 - 5 mm)",
+        "wood_cold_soundproofing_data": "20-27 dB"
+    },
+    "calculator": {
+        "calculator": "Kalkulator",
+        "choose_the_shape_of_your_balcony": "Wybierz kształt balkonu",
+        "and_specify_the_dimensions": "i określ wymiary",
+        "width": "Szerokość",
+        "mm": "mm",
+        "height": "Wysokość",
+        "next": "Dalej",
+        "choose_the_type_of_glazing": "Wybierz rodzaj oszklenia",
+        "and_his_profile": "i jego profil",
+        "wooden_glazing": "Szyby drewniane",
+        "aluminum_glazing": "Szyby aluminiowe",
+        "glazing_with_plastic_frames": "Szyby z plastikowymi ramkami",
+        "panoramic_glazing": "Panoramiczne przeszklenie",
+        "glazing_with_a_bow": "Przeszklenie z łukiem na zewnątrz",
+        "cold": "Zimne",
+        "warm": "Ciepłe",
+        "back": "Powrót",
+        "thank_you_for_contacting_us": "Dziękujemy za kontakt!",
+        "leave_your_contact_info": "Zostaw swoje dane",
+        "enter_your_name": "Wpisz swoje imię i nazwisko",
+        "enter_your_phone": "Wprowadź numer telefonu",
+        "we_will_contact_in_10_minutes": "Odzwonimy w ciągu 10 minut",
+        "call_you_back_in_10_minutes": "Specjalista skontaktuje się z Tobą w ciągu 10 minut!",
+        "calculate_the_cost": "Oblicz koszt",
+        "your_information_is_private": "Twoje dane są poufne",
+        "data_sent": "Dane zostały wysłane!",
+        "close_the_calculator": "Zamknąć kalkulator"
+    },
     "UAH_sq_m_": "UAH sq.m.",
-    "turnkey_installation": "instalacja \"pod klucz\"",
-    "calculate_the_cost": "Oblicz koszt"
+    "decoration": {
+        "order": "ZAMÓW WYKOŃCZENIE BALKONU Z 60% RABATEM!",
+        "interior_trim": "Wykończenie wnętrza",
+        "exterior_finish": "Wykończenie zewnętrzne",
+        "external_glazing": "Przeszklenie zewnętrzne",
+        "balcony_roof": "Dach balkonowy",
+        "with_material": "z materiałami"
+    },
+    "works": {
+        "our_works": "Nasze prace"
+    },
+    "guarantees": {
+        "we_guarantee_you": "gwarantujemy ci",
+        "high_quality": "Wysoką jakość",
+        "turnkey_work": "Pracę \"pod klucz\"",
+        "short_time_installation": "Instalacja w krótkim czasie",
+        "manufacturer_prices": "Ceny od producenta",
+        "measuring_and_consultation_for_free": "Bezpłatny pomiar i konsultację",
+        "warmth_and_comfort_on_the_balcony": "Ciepło i komfort na balkonie"
+    },
+    "payment": {
+        "you_can_pay_for_our_services": "Możesz zapłacić za nasze usługi",
+        "in_cash": "Gotówką",
+        "by_credit_card": "Kartą bankową",
+        "cashless_payment": "Płatnością bezgotówkową"
+    },
+    "promotion": {
+        "promotion_60": "Promocja 60% taniej!",
+        "save_money_on_glazing": "Zaoszczędź na szybach!",
+        "only_till_December_18": "Tylko do 18 grudnia!",
+        "before_the_end": "DO KOŃCA PROMOCJI:",
+        "days": "Dni",
+        "hours": "Godzin",
+        "minutes": "Minut",
+        "seconds": "Sekund"
+    },
+    "contacts": {
+        "how_to_find_us": "Jak nas znaleźć",
+        "first_adress": "Adres prawny:",
+        "first_subadress": "IRVAS Sp. z o.o., 125 Vesnyana St., Kijów, 127411",
+        "second_adress": "Aktualny adres:",
+        "second_subadress": "IRVAS Sp. z o.o., 141031, obwód kijowski, rejon kijowski, wieś Vereshki, Pervozvannogo str. 53",
+        "phone": "Telefon:",
+        "work_schedule": "Tryb pracy",
+        "seven_days_a_week": "9:00 - 18:00, 7 dni w tygodniu"
+    },
+    "feedback": {
+        "any_questions": "Są pytania?",
+        "ask_our_specialist": "Zapytaj naszego specjalistę!"
+    }
 
 
 

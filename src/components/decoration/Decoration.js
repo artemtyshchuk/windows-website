@@ -2,6 +2,8 @@ import { useState, useCallback, useRef} from 'react';
 import FormCard from '../formCard/FormCard';
 import { motion } from 'framer-motion';
 import { dataDecoration } from './dataDecoration';
+import { useTranslation } from 'react-i18next';
+
 
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css"; // Импорт стилей для слайдера
@@ -14,6 +16,8 @@ const Decoration = () => {
 	const [selectedData, setSelectedData] = useState(dataDecoration[0].interiorDecoration[0]);
 	const [activeDiv, setActiveDiv] = useState(0);
 	const divRef = useRef(null);
+
+	const { t } = useTranslation();
 
 	
 	const handleClick = useCallback((data, event, index) => {
@@ -71,7 +75,7 @@ const Decoration = () => {
 		<div className="decoration">
 
 			<div className="section_header">
-				<h2>ЗАКАЖИТЕ ОТДЕЛКУ БАЛКОНА СО СКИДКОЙ 60%!</h2>
+				<h2>{t('decoration.order')}</h2>
 				<div className="section_header_sub"></div>
 			</div>
 			<div className="decoration_slider">
@@ -81,7 +85,7 @@ const Decoration = () => {
 					<div 
 						className="internal_link no_click" 
 						onClick={(event) => handleClick(dataDecoration[0].interiorDecoration[0], event, 0)}>
-						<a href='http.git.com'>Внутренняя отделка</a>
+						<a href='http.git.com'>{t('decoration.interior_trim')}</a>
 					</div>
 				</div>
 
@@ -89,7 +93,7 @@ const Decoration = () => {
 					<div 
 						className="external_link no_click" 
 						onClick={(event) => handleClick(dataDecoration[0].exteriorDecoration[0], event, 1)}>
-						<a href='http.git.com'>Внешняя отделка</a>
+						<a href='http.git.com'>{t('decoration.exterior_finish')}</a>
 					</div>
 				</div>
 
@@ -97,7 +101,7 @@ const Decoration = () => {
 					<div 
 						className="rising_link no_click" 
 						onClick={(event) => handleClick(dataDecoration[0].remoteGlazing[0], event, 2)}>
-						<a href='http.git.com'>Выносное остекление</a>
+						<a href='http.git.com'>{t('decoration.external_glazing')}</a>
 					</div>
 				</div>
 
@@ -105,7 +109,7 @@ const Decoration = () => {
 					<div 
 						className="roof_link no_click" 
 						onClick={(event) => handleClick(dataDecoration[0].balconyRoof[0], event, 3)}>
-						<a href='http.git.com'>Крыша на балкон</a>
+						<a href='http.git.com'>{t('decoration.balcony_roof')}</a>
 					</div>
 				</div>
 			</Slider>
@@ -121,7 +125,7 @@ const Decoration = () => {
             		<motion.div key={item.id} className="decoration_content_material" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5, delay: index * 0.2 }}>
 						<img src={item.image} alt="itemImage" />
 						<h3>{item.title}</h3>
-						<p>{item.price} грн. кв.м.<span>с материалом</span></p>
+						<p>{item.price} {t('UAH_sq_m_')}<span>{t('decoration.with_material')}</span></p>
 					</motion.div>
     				))}
   				</div>

@@ -68,7 +68,7 @@ ul {
   
 .modal_form {
     position: fixed;
-    top: 50%;
+    top: 40%;
     left: 50%;
     transform: translate(-50%, -50%);
     width: 360px;
@@ -82,6 +82,30 @@ ul {
         :hover {
 			cursor: pointer;
 		}
+    }
+}
+
+.errorMessage {
+    margin: 50px auto;
+    width: 360px;
+    height: 435px;
+    background-color: #fff;
+    border-radius: 10px;
+    &_up {
+        background: linear-gradient(to right, red, blue);
+        text-align: center;
+        font-size: 20px;
+        background-clip: text;
+        color: transparent;
+    }
+    &_down {
+        text-align: center;
+        margin-top: 10px;
+        background: red;
+        font-size: 20px;
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent; 
     }
 }
 

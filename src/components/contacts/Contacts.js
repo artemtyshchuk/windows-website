@@ -1,13 +1,17 @@
+import { useTranslation } from 'react-i18next';
 
 import './contacts.scss';
 import './mediaContacts.scss';
 
 const Contacts = () => {
+
+    const { t } = useTranslation();
+
     return (
         <div className="contacts">
             <div className="container">
                 <div className="section_header">
-					<h2>Как нас найти</h2>
+					<h2>{t('contacts.how_to_find_us')}</h2>
 					<div className="section_header_sub"></div>
 				</div>
                 <div className="contacts_wrapper">
@@ -22,16 +26,16 @@ const Contacts = () => {
                         title="Google Maps"
                     ></iframe>					
                     <div className="contacts_info">
-                        <h3>Юридический адрес:</h3>
-                        <p>ООО «ИРВАС», 127411, г.Киев, Весняна ул., д.125</p>
-                        <h3>Фактический адрес:</h3>
-                        <p>ООО «ИРВАС», 141031, Киевская область, Киевский р-он, п.Вершки, Первозванного ул.,д.53</p>
-                        <h3>Телефон:</h3>
+                        <h3>{t('contacts.first_adress')}</h3>
+                        <p>{t('contacts.first_subadress')}</p>
+                        <h3>{t('contacts.second_adress')}</h3>
+                        <p>{t('contacts.second_subadress')}</p>
+                        <h3>{t('contacts.phone')}</h3>
                         <p>+38 (063) 295-59-30</p>
                         <h3>E-mail:</h3>
                         <a href="http.git.com">info@irvas.com</a>
-                        <h3>Режим работы:</h3>
-                        <p>9:00 - 18:00 без выходных</p>
+                        <h3>{t('contacts.work_schedule')}</h3>
+                        <p>{t('contacts.seven_days_a_week')}</p>
                     </div>
 				</div>
             </div>

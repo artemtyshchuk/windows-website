@@ -1,10 +1,11 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-
+import { motion } from 'framer-motion';
 import quality from '../../assets/img/main/icons/quality.png';
 import time from '../../assets/img/main/icons/time.png';
 import guaranty from '../../assets/img/main/icons/guaranty.png';
 import delivery from '../../assets/img/main/icons/delivery.png';
+
 
 import LanguageFlags from './LanguageFlags';
 
@@ -12,6 +13,29 @@ import FormCard from '../formCard/FormCard';
 import './main.scss';
 import './mediaMain.scss';
 
+const rightAnimation = {
+    hidden: {
+        x: -100,
+        opacity: 0,
+    },
+    visible: custom => ({
+        x: 0,
+        opacity: 1,
+        transition: {delay: custom * 0.2},
+    }),
+}
+
+// const leftAnimation = {
+//     hidden: {
+//         x: 100,
+//         opacity: 0,
+//     },
+//     visible: custom => ({
+//         x: 0,
+//         opacity: 1,
+//         transition: {delay: custom * 0.2},
+//     }),
+// }
 
 
 const Main = () => {
@@ -19,42 +43,42 @@ const Main = () => {
 
 
     return (
-        <div className='main'>
+        <motion.div 
+            initial="hidden"
+            whileInView="visible"
+            className='main'>
             <div className="container">
                 <div className="row">
                 <LanguageFlags/>
-                    <h1><span>{t('balcony_glazing')}<br/></span>{t('for_12_800_hryvnia')}</h1>
+                    <motion.h1 custom={1} variants={rightAnimation} ><span>{t('main.balcony_glazing')}<br/></span>{t('main.for_12_800_hryvnia')}</motion.h1>
                     <div className="main_features">
 
-                        <div className="main_features_block">
+                        <motion.div custom={3} variants={rightAnimation} className="main_features_block-extra">
                             <img src={quality} alt="qualityIcon" />
-                            <p>{t('high_quality')}</p>
-                        </div>
+                            <p>{t('main.high_quality')}</p>
+                        </motion.div>
 
-                        <div className="main_features_block">
+                        <motion.div custom={4} variants={rightAnimation} className="main_features_block-extra">
                             <img src={time} alt="timeIcon" />
-                            <p>{t('quick_installation')}</p>
-                        </div>
+                            <p>{t('main.quick_installation')}</p>
+                        </motion.div>
 
-                        <div className="main_features_block">
+                        <motion.div custom={5} variants={rightAnimation} className="main_features_block">
                             <img className="small_img" src={guaranty} alt="guarantyIcon" />
-                            <p>{t('warranty_3_years')}</p>
-                        </div>
+                            <p>{t('main.warranty_3_years')}</p>
+                        </motion.div>
 
-                        <div className="main_features_block">
+                        <motion.div custom={6} variants={rightAnimation} className="main_features_block">
                             <img className="small_img" src={delivery} alt="" />
-                            <p>{t('garbage_removal')}</p>
-                        </div>
+                            <p>{t('main.garbage_removal')}</p>
+                        </motion.div>
 
                     </div>
-
-                    <div className="form main_form">
-                        <FormCard/>
-                    </div>
-
+                    
+                    <FormCard/>
                 </div>
             </div>
-        </div>
+        </motion.div>
     )
 }
 

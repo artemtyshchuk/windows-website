@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
+
 
 import firstPictureOfWork from '../../assets/img/our_works/big_img/1.png'
 import secondPictureOfWork from '../../assets/img/our_works/big_img/2.png'
@@ -19,6 +21,9 @@ import './mediaWorks.scss';
 const Works = () => {
 
 const [selectedImage, setSelectedImage] = useState(null);
+
+const { t } = useTranslation();
+
 
 const settings = {
 	dots: true,
@@ -93,7 +98,7 @@ useEffect(() => {
 return (
 	<div className="works">
 			<div className="section_header">
-				<h2>Наши работы</h2>
+				<h2>{t('works.our_works')}</h2>
 				<div className="section_header_sub"></div>
 			</div>
 			<>

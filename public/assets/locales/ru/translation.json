@@ -1,34 +1,129 @@
 {
-    "glazing_of_balconies_and_loggias_in_Kyiv": "Остекление балконов и лоджий в Киеве и Киевской области",
-    "call_a_measurer": "Вызвать замерщика",
-    "without_a_holiday": "без выходных",
-    "book_a_consultation": "Заказать консультацию",
-    "balcony_glazing": "Остекление балконов \"под ключ\"",
-    "for_12_800_hryvnia": "за 12 800 гривен!",
-    "high_quality": "Высокое качество",
-    "quick_installation": "Быстрый монтаж",
-    "warranty_3_years": "Гарантия 3 года",
-    "garbage_removal": "Вывоз мусора",
-    "sign_up_for_a_free": "Запишитесь сегодня на",
-    "measurement_today": "бесплатный замер",
-    "enter_your_name": "Введите Ваше имя",
-    "enter_your_phone": "Введите номер телефона",
-    "call_a_measuring_engineer": "Вызвать замерщика!",
-    "your_information_is_private": "Ваши данные конфиденциальны",
-    "glazing_balconies_and_loggias": "Остекление балконов и лоджий",
-    "glazing": "Остекление",
-    "wooden": "Деревянное",
-    "aluminum": "Алюминиевое",
-    "plastic": "Пластиковое",
-    "french": "Французское",
-    "outboard": "с выносом",
-    "cold": "Холодное",
-    "warm": "Теплое",
-    "thermal_insulation": "Теплоизоляция",
-    "sound_insulation": "Звукоизоляция",
-    "UAH_sq_m_": "грн кв.м.",
-    "turnkey_installation": "под ключ с установкой",
-    "calculate_the_cost": "Рассчитать стоимость"
+    "header": {
+        "glazing_of_balconies_and_loggias_in_Kyiv": "Остекление балконов и лоджий в Киеве и Киевской области",
+        "call_a_measurer": "Вызвать замерщика",
+        "without_a_holiday": "без выходных",
+        "book_a_consultation": "Заказать консультацию"
+    },
+    "main": {
+        "balcony_glazing": "Остекление балконов \"под ключ\"",
+        "for_12_800_hryvnia": "за 12 800 гривен!",
+        "high_quality": "Высокое качество",
+        "quick_installation": "Быстрый монтаж",
+        "warranty_3_years": "Гарантия 3 года",
+        "garbage_removal": "Вывоз мусора"
+    },
+    "formCard": {
+        "sign_up_for_a_free": "Запишитесь сегодня на",
+        "measurement_today": "бесплатный замер",
+        "enter_your_name": "Введите Ваше имя",
+        "enter_your_phone": "Введите номер телефона",
+        "call_a_measuring_engineer": "Вызвать замерщика!",
+        "your_information_is_private": "Ваши данные конфиденциальны",
+        "data_not_sent_try_again_later": "Данные не отправлены, повторите попытку позже!",
+        "close": "Закрыть",
+        "data_sent_successfully": "Данные успешно отправлены!"
+
+    },
+    "glazing": {
+        "glazing_balconies_and_loggias": "Остекление балконов и лоджий",
+        "glazing": "Остекление",
+        "wooden": "Деревянное",
+        "aluminum": "Алюминиевое",
+        "plastic": "Пластиковое",
+        "french": "Французское",
+        "outboard": "с выносом",
+        "cold": "Холодное",
+        "warm": "Теплое",
+        "structural_thickness": "Конструктивная толщина:",
+        "thermal_insulation": "Теплоизоляция",
+        "sound_insulation": "Звукоизоляция",
+        "turnkey_installation": "под ключ с установкой",
+        "calculate_the_cost": "Рассчитать стоимость",
+        "wood_cold_thickness_data": "Конструктивная толщина: 42-58 мм",
+        "wood_cold_glazing_data": "полированное стекло (толщиной 4 - 5 мм)",
+        "wood_cold_soundproofing_data": "20-27 дб"
+    },
+    "calculator": {
+        "calculator": "Калькулятор",
+        "choose_the_shape_of_your_balcony": "Выберите форму балкона",
+        "and_specify_the_dimensions": "и укажите размеры",
+        "width": "Ширина",
+        "mm": "мм",
+        "height": "Высота",
+        "next": "Далее",
+        "choose_the_type_of_glazing": "Выберите тип остекления",
+        "and_his_profile": "и его профиль",
+        "wooden_glazing": "Деревянное остекление",
+        "aluminum_glazing": "Алюминиевое остекление",
+        "glazing_with_plastic_frames": "Остекление пластиковыми рамами",
+        "panoramic_glazing": "Панорамное остекление",
+        "glazing_with_a_bow": "Остекление с выносом",
+        "cold": "Холодное",
+        "warm": "Теплое",
+        "back": "Назад",
+        "thank_you_for_contacting_us": "Спасибо за обращение!",
+        "leave_your_contact_info": "Оставьте свои данные",
+        "enter_your_name": "Введите ваше имя",
+        "enter_your_phone": "Введите номер телефона",
+        "we_will_contact_in_10_minutes": "Мы свяжемся с вами в течение 10 минут",
+        "call_you_back_in_10_minutes": "Наш специалист свяжется с вами в течении 10 минут!",
+        "calculate_the_cost": "Рассчитать стоимость",
+        "your_information_is_private": "Ваши данные конфиденциальны",
+        "data_sent": "Данные отправлены!",
+        "close_the_calculator": "Закрыть калькулятор"
+    },
+    "UAH_sq_m_": "грн кв.м.",    
+    "decoration": {
+        "order": "ЗАКАЖИТЕ ОТДЕЛКУ БАЛКОНА СО СКИДКОЙ 60%!",
+        "interior_trim": "Внутренняя отделка",
+        "exterior_finish": "Внешняя отделка",
+        "external_glazing": "Выносное остекление",
+        "balcony_roof": "Крыша на балкон",
+        "with_material": "with material"
+    },
+    "works": {
+        "our_works": "Наши работы"
+    },
+    "guarantees": {
+        "we_guarantee_you": "мы гарантируем вам",
+        "high_quality": "Высокое качество",
+        "turnkey_work": "Выполнение работ под ключ",
+        "short_time_installation": "Монтаж в короткие сроки",
+        "manufacturer_prices": "Цены от производителя",
+        "measuring_and_consultation_for_free": "Бесплатный замер и консультацию",
+        "warmth_and_comfort_on_the_balcony": "Тепло и уют на балконе"
+    },
+    "payment": {
+        "you_can_pay_for_our_services": "Вы можете оплатить наши услуги",
+        "in_cash": "Наличными",
+        "by_credit_card": "Банковской картой",
+        "cashless_payment": "Безналичный расчет"
+    },
+    "promotion": {
+        "promotion_60": "Акция - 60%",
+        "save_money_on_glazing": "Успей сэкономить на остеклении!",
+        "only_till_December_18": "Только до 18 декабря!",
+        "before_the_end": "ДО ЗАВЕРШЕНИЯ АКЦИИ:",
+        "days": "Дней",
+        "hours": "Часов",
+        "minutes": "Минут",
+        "seconds": "Секунд"
+    },
+    "contacts": {
+        "how_to_find_us": "Как нас найти",
+        "first_adress": "Юридический адрес:",
+        "first_subadress": "ООО «ИРВАС», 127411, г.Киев, Весняна ул., д.125",
+        "second_adress": "Фактический адрес:",
+        "second_subadress": "ООО «ИРВАС», 141031, Киевская область, Киевский р-он, п.Вершки, Первозванного ул.,д.53",
+        "phone": "Телефон:",
+        "work_schedule": "Режим работы",
+        "seven_days_a_week": "9:00 - 18:00, без выходных"
+    },
+    "feedback": {
+        "any_questions": "Остались вопросы?",
+        "ask_our_specialist": "Спросите у нашего специалиста!"
+    }
 
 
 
