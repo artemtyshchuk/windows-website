@@ -26,6 +26,7 @@
     }
     &_form {
         display: grid;
+        justify-content: end;
         grid-column: 2 / 3;
         grid-row: 1 / 4;
         

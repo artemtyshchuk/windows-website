@@ -23,19 +23,20 @@
 
 @media (max-width: 768px) { //577
     .guarantees {
-        margin-top: 30px;
-        padding: 10px;
+        padding: 50px;
         &_wrapper {
             grid-template-columns: 1fr;
             grid-template-rows: repeat(6, 210px); 
+        }
+        .section_header {
+            margin-bottom: 30px;
         }
     }
 }
 
 @media (max-width: 576px) {
     .guarantees {
-        margin-top: 30px;
-        padding: 10px;
+        padding: 30px;
         &_wrapper {
             grid-template-columns: 1fr;
             grid-template-rows: repeat(6, 210px); 

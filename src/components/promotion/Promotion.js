@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { motion } from 'framer-motion';
 
 import FormCard from '../formCard/FormCard';
 
@@ -45,27 +46,60 @@ const Promotion = () => {
     }, [])
 
 
+    const rightAnimation = {
+        hidden: {
+            x: -100,
+            opacity: 0,
+        },
+        visible: custom => ({
+            x: 0,
+            opacity: 1,
+            transition: {delay: custom * 0.2},
+        }),
+    }
+
+    const topAnimation = {
+		hidden: {
+			y: 100,
+			opacity: 0,
+		},
+		visible: custom => ({
+			y: 0,
+			opacity: 1,
+			transition: {delay: custom * 0.2},
+		}),
+	}
+
+
     return (
-        <div className="sale">
+        <motion.div 
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ amount: 0.2, once: true }}
+            className="sale">
             <div className="sale_wrapper">
 
-                <h2 className="sale_title">{t('promotion.promotion_60')}</h2>
-                <p className="sale_subtitle">{t('promotion.save_money_on_glazing')}<br/> {t('promotion.only_till_December_18')}</p>
+                <motion.h2 custom={1} variants={rightAnimation} className="sale_title">{t('promotion.promotion_60')}</motion.h2>
+                <motion.p  custom={2} variants={rightAnimation} className="sale_subtitle">{t('promotion.save_money_on_glazing')}<br/> {t('promotion.only_till_December_18')}</motion.p>
                 <div className="timer1" id="timer">
                     <h4>{t('promotion.before_the_end')}</h4>
-                    <div className="container1">
-                            <div className="numbers1"><div><span id="days">{timeLeft.days}</span></div><div className="description1">{t('promotion.days')}</div></div>
-                            <div className="numbers1"><div><span id="hours">{timeLeft.hours}</span></div><div className="description1">{t('promotion.hours')}</div></div>
-                            <div className="numbers1"><div><span id="minutes">{timeLeft.minutes}</span></div><div className="description1">{t('promotion.minutes')}</div></div>
-                            <div className="numbers1"><div><span id="seconds">{timeLeft.seconds}</span></div><div className="description1">{t('promotion.seconds')}</div></div>      
-                    </div>
+                    <motion.div 
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ amount: 0.2, once: true }}
+                        className="container1">
+                            <motion.div custom={1} variants={topAnimation} className="numbers1"><div><span id="days">{timeLeft.days}</span></div><div className="description1">{t('promotion.days')}</div></motion.div>
+                            <motion.div custom={2} variants={topAnimation} className="numbers1"><div><span id="hours">{timeLeft.hours}</span></div><div className="description1">{t('promotion.hours')}</div></motion.div>
+                            <motion.div custom={3} variants={topAnimation} className="numbers1"><div><span id="minutes">{timeLeft.minutes}</span></div><div className="description1">{t('promotion.minutes')}</div></motion.div>
+                            <motion.div custom={4} variants={topAnimation} className="numbers1"><div><span id="seconds">{timeLeft.seconds}</span></div><div className="description1">{t('promotion.seconds')}</div></motion.div>      
+                    </motion.div>
                 </div>
 
                 <div className="sale_form">
                     <FormCard className="sale_form-component"/>
                 </div>
             </div>
-        </div>
+        </motion.div>
     )
 }
 

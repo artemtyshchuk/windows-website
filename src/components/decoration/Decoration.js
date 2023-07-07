@@ -44,7 +44,7 @@ const Decoration = () => {
 		initialSlide: 0,
 		responsive: [
 		  {
-			breakpoint: 1024,
+			breakpoint: 1160,
 			settings: {
 			  slidesToShow: 2,
 			  slidesToScroll: 2,
@@ -71,71 +71,146 @@ const Decoration = () => {
 		]
 	};
 
+	const topAnimation = {
+		hidden: {
+			y: 100,
+			opacity: 0,
+		},
+		visible: custom => ({
+			y: 0,
+			opacity: 1,
+			transition: {delay: custom * 0.2},
+		}),
+	}
+
+	const lineAnimation = {
+		hidden: {
+			y: 100,
+			opacity: 0,
+		},
+		visible: custom => ({
+			y: 0,
+			opacity: 1,
+			transition: {delay: custom * 0.2},
+		}),
+	}
+
+	const rightAnimation = {
+		hidden: {
+			x: -100,
+			opacity: 0,
+		},
+		visible: custom => ({
+			x: 0,
+			opacity: 1,
+			transition: {delay: custom * 0.2},
+		}),
+	}
+
+
 	return (
-		<div className="decoration">
+		<motion.div 
+			className="decoration"
+			initial="hidden"
+			whileInView="visible"
+			viewport={{ amount: 0.1, once: true }}>
 
 			<div className="section_header">
-				<h2>{t('decoration.order')}</h2>
+				<motion.h2 custom={1} variants={topAnimation}>{t('decoration.order')}</motion.h2>
 				<div className="section_header_sub"></div>
 			</div>
-			<div className="decoration_slider">
+			<motion.div
+				initial="hidden"
+				whileInView="visible"
+				viewport={{ amount: 0.2, once: true }}  
+				className="decoration_slider">
 			<Slider {...settings}>
 
-				<div className={`decoration_item${activeDiv === 0 ? '_active' : ''}`}>
+				<motion.div 
+					whileTap={{ scale: 0.9 }}
+					custom={1} 
+					variants={lineAnimation}
+					className={`decoration_item${activeDiv === 0 ? '_active' : ''}`}>
 					<div 
 						className="internal_link no_click" 
 						onClick={(event) => handleClick(dataDecoration[0].interiorDecoration[0], event, 0)}>
 						<a href='http.git.com'>{t('decoration.interior_trim')}</a>
 					</div>
-				</div>
+				</motion.div>
 
-				<div className={`decoration_item${activeDiv === 1 ? '_active' : ''}`}>
+				<motion.div 
+					whileTap={{ scale: 0.9 }}
+					custom={2} 
+					variants={lineAnimation}
+					className={`decoration_item${activeDiv === 1 ? '_active' : ''}`}>
 					<div 
 						className="external_link no_click" 
 						onClick={(event) => handleClick(dataDecoration[0].exteriorDecoration[0], event, 1)}>
 						<a href='http.git.com'>{t('decoration.exterior_finish')}</a>
 					</div>
-				</div>
+				</motion.div>
 
-				<div className={`decoration_item${activeDiv === 2 ? '_active' : ''}`}>
+				<motion.div 
+					whileTap={{ scale: 0.9 }}
+					custom={2} 
+					variants={lineAnimation}
+					className={`decoration_item${activeDiv === 2 ? '_active' : ''}`}>
 					<div 
 						className="rising_link no_click" 
 						onClick={(event) => handleClick(dataDecoration[0].remoteGlazing[0], event, 2)}>
 						<a href='http.git.com'>{t('decoration.external_glazing')}</a>
 					</div>
-				</div>
+				</motion.div>
 
-				<div className={`decoration_item${activeDiv === 3 ? '_active' : ''}`}>
+				<motion.div 
+					whileTap={{ scale: 0.9 }}
+					custom={1} 
+					variants={lineAnimation}
+					className={`decoration_item${activeDiv === 3 ? '_active' : ''}`}>
 					<div 
 						className="roof_link no_click" 
 						onClick={(event) => handleClick(dataDecoration[0].balconyRoof[0], event, 3)}>
 						<a href='http.git.com'>{t('decoration.balcony_roof')}</a>
 					</div>
-				</div>
+				</motion.div>
 			</Slider>
-			</div>
+			</motion.div>
 
-			<div className="decoration_content">
-				<motion.div className="decoration_content_img" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1 }}>
+			<motion.div 
+				initial="hidden"
+				whileInView="visible"
+				viewport={{ amount: 0.2, once: true }} 
+				className="decoration_content">
+				<motion.div 
+					custom={1} 
+					variants={rightAnimation}
+					className="decoration_content_img">
     				<img src={selectedData.imageMain} alt="decorationImage" />
 				</motion.div>
 
-  				<div className="decoration_content_wrapper">
+  				<motion.div 
+					className="decoration_content_wrapper">
     				{selectedData.items.map((item, index) => (
-            		<motion.div key={item.id} className="decoration_content_material" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5, delay: index * 0.2 }}>
+            		<motion.div 
+						key={item.id}
+						initial={{ opacity: 0 }} 
+						animate={{ opacity: 1 }} 
+						transition={{ duration: 0.5, delay: index * 0.2 }}
+						className="decoration_content_material">
 						<img src={item.image} alt="itemImage" />
 						<h3>{item.title}</h3>
 						<p>{item.price} {t('UAH_sq_m_')}<span>{t('decoration.with_material')}</span></p>
 					</motion.div>
     				))}
-  				</div>
+  				</motion.div>
 
-				<motion.div className="decoration_content_form" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5, delay: selectedData.items.length * 0.1 }}>
+				<div className="decoration_content_form">
 					<FormCard className="decoration_content_form-component" />
-				</motion.div>
-			</div>
+				</div>
 
-		</div>
+			</motion.div>
+
+		</motion.div>
 			
 	)
 }

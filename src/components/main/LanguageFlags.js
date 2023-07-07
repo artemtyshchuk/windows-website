@@ -40,9 +40,11 @@ export default function LanguageFlags() {
 
 	const [anchorEl, setAnchorEl] = React.useState(null);
 	const open = Boolean(anchorEl);
+
 	const handleClick = (event) => {
 	  setAnchorEl(event.currentTarget);
 	};
+	
 	const handleClose = () => {
 	  setAnchorEl(null);
 	};
@@ -52,7 +54,7 @@ return (
 	<div className='flags'>
 		<Tooltip title={t('language')} arrow>
   			<IconButton onClick={handleClick} size="small" sx={{ ml: 2 }}>
-				<LanguageIcon style={{width:'32px', height:'32px'}}/>
+				<LanguageIcon style={{width:'42px', height:'42px'}}/>
  			</IconButton>
 		</Tooltip>
 		<Menu
@@ -71,8 +73,8 @@ return (
 				mt: 1.5,
 				bgcolor: '#F8F8F8',
 				'& .MuiAvatar-root': {
-					width: 32,
-					height: 32,
+					width: 42,
+					height: 42,
 					ml: -0.5,
 					mr: 1,
 				},
@@ -109,8 +111,8 @@ return (
           className={`flag-icon fi-${country_code}`}
           style={{
             opacity: currentLanguageCode === code ? 1 : 0.3,
-            width: '30px',
-            height: '20px',
+            width: 35,
+            height: 25,
           }}
         />
       </IconButton>

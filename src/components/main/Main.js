@@ -25,18 +25,6 @@ const rightAnimation = {
     }),
 }
 
-// const leftAnimation = {
-//     hidden: {
-//         x: 100,
-//         opacity: 0,
-//     },
-//     visible: custom => ({
-//         x: 0,
-//         opacity: 1,
-//         transition: {delay: custom * 0.2},
-//     }),
-// }
-
 
 const Main = () => {
     const { t } = useTranslation();
@@ -45,6 +33,7 @@ const Main = () => {
     return (
         <motion.div 
             initial="hidden"
+            viewport={{ amount: 0.1, once: true }}
             whileInView="visible"
             className='main'>
             <div className="container">

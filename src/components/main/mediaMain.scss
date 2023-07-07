@@ -16,12 +16,6 @@
         .row {
             grid-template-columns: auto 380px;
         }
-        &_features {
-            display: grid;
-            align-content: space-between;
-            align-items: end;
-            margin-top: 0;
-        }
     }
 }
 
@@ -38,13 +32,16 @@
             grid-template-rows: auto auto;
         }
         &_features {
+
+            padding: 0;
             display: grid;
-            grid-template-columns: repeat(2, auto);
-            grid-template-rows: repeat(2, auto);
+            height: 200px;
+            grid-template-columns: repeat(2, 105px);
+            grid-template-rows: repeat(2, 105px);
             column-gap: 20px;
             row-gap: 30px;
-            align-items: end;
-            margin-top: 0;
+            align-content: center;
+            justify-content: space-around;
         }
     }
 }
@@ -64,12 +61,17 @@
             display: grid;
             grid-template-columns: 1fr;
             grid-template-rows: repeat(3, auto);
-            row-gap: 25px;
+            row-gap: 50px;
         }
         &_features {
+            padding: 0;
             display: grid;
-            grid-template-columns: repeat(2, auto);
-            grid-template-rows: repeat(2, auto);
+            height: 200px;
+            grid-template-columns: repeat(2, 105px);
+            grid-template-rows: repeat(2, 105px);
+            column-gap: 20px;
+            row-gap: 30px;
+            align-content: center;
             justify-content: space-around;
         }
     }
@@ -89,12 +91,17 @@
             display: grid;
             grid-template-columns: 1fr;
             grid-template-rows: repeat(3, auto);
-            row-gap: 25px;
+            row-gap: 50px;
         }
         &_features {
+            padding: 0;
             display: grid;
-            grid-template-columns: repeat(2, auto);
-            grid-template-rows: repeat(2, auto);
+            height: 200px;
+            grid-template-columns: repeat(2, 105px);
+            grid-template-rows: repeat(2, 105px);
+            column-gap: 20px;
+            row-gap: 30px;
+            align-content: center;
             justify-content: space-around;
         }
     }

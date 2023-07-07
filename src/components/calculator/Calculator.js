@@ -6,6 +6,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { Formik, Form, Field, ErrorMessage as FormikErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { useTranslation } from 'react-i18next';
+import { motion } from 'framer-motion';
 
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css"; // Импорт стилей для слайдера
@@ -26,6 +27,8 @@ import calculatorStepTwoIconWarm from '../../assets/img/modal_calc/icon_warm.png
 
 import Spinner from '../spinner/Spinner';
 import ErrorMessage from '../errorMessage/ErrorMessage';
+import DataSentSuccessfully from '../formCard/DataSentSuccessfully';
+
 
 import './calculator.scss';
 import './mediaCalculator.scss';
@@ -48,12 +51,8 @@ const Calculator = () => {
 
 
     const [windowType, setWindowType] = useState(0);
-    const [width, setWidth] = useState('');
-    const [height, setHeight] = useState('');
     const [glazingMaterial, setGlazingMaterial] = useState("plastic");
     const [glazingProfile, setGlazingProfile] = useState();
-    const [clientName, setClientName] = useState('');
-	const [clientPhone, setClientPhone] = useState('');
 
     const dispatch = useDispatch();
     const {request} = useHttp();
@@ -96,7 +95,6 @@ const Calculator = () => {
             name: values.clientName,
             phone: values.clientPhone
         }
-		// formik.setFieldValue('isFormSubmitted', true);
         request("http://localhost:3001/clients", "POST", JSON.stringify(newClient))
             .then(res => {
 				console.log(res, 'Отправка успешна');
@@ -113,12 +111,8 @@ const Calculator = () => {
 				setIsSubmitting(false);
 			});
         setWindowType()
-        values.setWidth('')
-        values.setHeight('')
         setGlazingMaterial()
         setGlazingProfile()
-		values.setClientName('')
-		values.setClientPhone('')
     }
 
 	const handleColdCheckboxChange = (event) => {
@@ -193,11 +187,27 @@ const Calculator = () => {
 		]
 	};
 
+	const calcAnimation = {
+        hidden: {
+            opacity: 0,
+        },
+        visible: custom => ({
+            opacity: 1,
+            transition: {delay: custom * 0.2},
+        }),
+    }
+	
+
 
     return (
-			<div className="popup_calc open">
+			<motion.div 
+				initial="hidden"
+				whileInView="visible"
+				custom={1} 
+				variants={calcAnimation}
+				className="popup_calc open">
 				{isFormSubmitted ? (
-					<Spinner/>
+					<DataSentSuccessfully />
 				) : isSubmitting ? (
 					<Spinner/>
 				): error ? (
@@ -229,23 +239,26 @@ const Calculator = () => {
 				<Form>
 				<div className="popup_dialog">
 					<div className="popup_calc_content">
-						<button type="button" className="popup_calc_close" onClick={() => {dispatch(closeCalculator())}}>
+						<motion.button whileTap={{ scale: 0.9 }} type="button" className="popup_calc_close" onClick={() => {dispatch(closeCalculator())}}>
 							<strong>&times;</strong>
-						</button>
+						</motion.button>
 						<h2>{t('calculator.calculator')}</h2>
 						{step === 0 && (
 							<>
-								<h3>{t('calculator.choose_the_shape_of_your_balcony')}<br />{t('calculator.and_specify_the_dimensions')}</h3>
+								<motion.h3>{t('calculator.choose_the_shape_of_your_balcony')}<br />{t('calculator.and_specify_the_dimensions')}</motion.h3>
 								<div className="balcon_icons">
 								<Slider {...settings}>
 									{images.map((image, index) => (
-										<span
+										<motion.span
+											initial={{ opacity: 0 }} 
+											animate={{ opacity: 1 }} 
+											transition={{ duration: 0.5, delay: index * 0.3 }}
 											key={index}
 											className={`balcon_icons_img ${index === selectedImageIndex ? 'do_image_more' : ''}`}
 											onClick={() => handleImageChange(index)}
 										>
 											<img src={image.thumbnail} alt={`typeOfWindow${index + 1}`} />
-										</span>
+										</motion.span>
 									))}
 								</Slider>
 								</div>
@@ -259,7 +272,7 @@ const Calculator = () => {
 									<div className="popup_calc_content_form_formControlWidth">
 										<Field 
 											id="width" 
-											type="text" 
+											type="number" 
 											placeholder={t('calculator.width')}
 											name="width"
 											/>
@@ -275,7 +288,7 @@ const Calculator = () => {
 										<Field 
 											id="height" 
 											name="height"
-											type="text" 
+											type="number" 
 											placeholder={t('calculator.height')} 
 											/>
 											<label htmlFor="height">{t('calculator.mm')}</label>
@@ -286,9 +299,10 @@ const Calculator = () => {
 								</div>
 
 								<div className="popup_calc_content_button">
-									<button 
+									<motion.button 
+										whileTap={{ scale: 0.9 }}
 										className="button"
-										onClick={handleNextButtonClick}>{t('calculator.next')}</button>
+										onClick={handleNextButtonClick}>{t('calculator.next')}</motion.button>
 								</div>
 							</>
 						)}
@@ -324,8 +338,8 @@ const Calculator = () => {
 								</div>
 
 								<div className="popup_calc_content_button">
-									<button className="button" onClick={handleNextButtonClick}>{t('calculator.next')}</button>
-									<button className="prevButton" onClick={handlePrevButtonClick}>{t('calculator.back')}</button>
+									<motion.button whileTap={{ scale: 0.9 }} className="button" onClick={handleNextButtonClick}>{t('calculator.next')}</motion.button>
+									<motion.button whileTap={{ scale: 0.9 }} className="prevButton" onClick={handlePrevButtonClick}>{t('calculator.back')}</motion.button>
 								</div>
 							</>
 						)}
@@ -348,7 +362,7 @@ const Calculator = () => {
 										id="clientPhone" 
 										className="popup_calc_form-control form_input" 
 										name="clientPhone" 
-										type="text" 
+										type="number" 
 										placeholder={t('calculator.enter_your_phone')}
 										/>
 										{formik.touched.clientPhone && formik.errors.clientPhone && !isFormSubmitted && (
@@ -358,13 +372,14 @@ const Calculator = () => {
 								</div>
 
 								<div className="popup_calc_content_button">
-									<button 
+									<motion.button 
+										whileTap={{ scale: 0.9 }}
 										className="button"
 										type="submit" 
 										name="submit"
 										disabled={!formik.isValid || formik.isSubmitting} 
-										>{t('calculator.calculate_the_cost')}</button>
-									<button className="prevButton" onClick={handlePrevButtonClick}>{t('calculator.back')}</button>
+										>{t('calculator.calculate_the_cost')}</motion.button>
+									<motion.button whileTap={{ scale: 0.9 }} className="prevButton" onClick={handlePrevButtonClick}>{t('calculator.back')}</motion.button>
 									<p className="form_notice">{t('calculator.your_information_is_private')}</p>
 								</div>
 								
@@ -375,10 +390,11 @@ const Calculator = () => {
 							<>
 								<h3>{t('calculator.data_sent')}<br/>{t('calculator.call_you_back_in_10_minutes')}</h3>
 								<div className="popup_calc_content_button">
-									<button
+									<motion.button
+										whileTap={{ scale: 0.9 }}
 										className="button" 
 										onClick={() => {dispatch(closeCalculator())}}>{t('calculator.close_the_calculator')}
-									</button>
+									</motion.button>
 								</div>
 							</>
 						)}
@@ -389,7 +405,7 @@ const Calculator = () => {
 				)}
 				</Formik>
 				)}
-			</div>
+			</motion.div>
     );
 };
 

@@ -1,7 +1,34 @@
 .flags {
     position: absolute;
+    top: 110px;
     right: 0;
     padding-right: 20px;
-    padding-top: 20px;
+    padding-top: 0;
+}
+
+
+@media (max-width: 1439px) { //1201
+    .flags {
+        top: 110px;
+    }
+}
+
+@media (max-width: 1200px) { //993
+
+}
+
+@media (max-width: 992px) { //769
+    .flags {
+        top: 90px;
+        padding-right: 10px;
+    }
+}
+
+@media (max-width: 768px) { //577
     
 }
+
+@media (max-width: 576px) {
+    
+}
+

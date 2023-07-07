@@ -66,14 +66,15 @@
         "leave_your_contact_info": "Оставьте свои данные",
         "enter_your_name": "Введите ваше имя",
         "enter_your_phone": "Введите номер телефона",
-        "we_will_contact_in_10_minutes": "Мы свяжемся с вами в течение 10 минут",
+        "we_will_contact_in_10_minutes": "Перезвоним в течение 10 минут",
         "call_you_back_in_10_minutes": "Наш специалист свяжется с вами в течении 10 минут!",
         "calculate_the_cost": "Рассчитать стоимость",
         "your_information_is_private": "Ваши данные конфиденциальны",
         "data_sent": "Данные отправлены!",
         "close_the_calculator": "Закрыть калькулятор"
     },
-    "UAH_sq_m_": "грн кв.м.",    
+    "UAH_sq_m_": "грн кв.м.", 
+    "language": "Язык",   
     "decoration": {
         "order": "ЗАКАЖИТЕ ОТДЕЛКУ БАЛКОНА СО СКИДКОЙ 60%!",
         "interior_trim": "Внутренняя отделка",

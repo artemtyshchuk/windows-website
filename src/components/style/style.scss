@@ -1,6 +1,4 @@
-// @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;700;800&display=swap');
 @import './button.scss';
-@import './variables.scss';
 @import './form.scss';
 
 * {
@@ -70,7 +68,7 @@ ul {
     position: fixed;
     top: 40%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%)!important;
     width: 360px;
     height: 435px;
     margin-top: 20px;
@@ -111,11 +109,9 @@ ul {
 
 @media (max-width: 576px) {
     .modal_form {
-        // margin-top: 25px;
         margin: 0;
         width: 300px;
         height: 425px;
-        // margin: 45px auto;
         grid-column: 1/2;
         grid-row: 3/4;
         h2 {

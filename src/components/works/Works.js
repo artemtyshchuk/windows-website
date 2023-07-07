@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-
+import { motion } from 'framer-motion';
 
 import firstPictureOfWork from '../../assets/img/our_works/big_img/1.png'
 import secondPictureOfWork from '../../assets/img/our_works/big_img/2.png'
@@ -12,8 +12,8 @@ import seventhPictureOfWork from '../../assets/img/our_works/big_img/7.png'
 import eighthPictureOfWork from '../../assets/img/our_works/big_img/8.png'
 
 import Slider from "react-slick";
-import "slick-carousel/slick/slick.css"; // Импорт стилей для слайдера
-import "slick-carousel/slick/slick-theme.css"; // Импорт темы для слайдера
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 import './works.scss';
 import './mediaWorks.scss';
@@ -93,34 +93,63 @@ useEffect(() => {
 }, [])
 
 
+const topAnimation = {
+	hidden: {
+		y: 100,
+		opacity: 0,
+	},
+	visible: custom => ({
+		y: 0,
+		opacity: 1,
+		transition: {delay: custom * 0.2},
+	}),
+}
+
+const worksAnimation = {
+	hidden: {
+		opacity: 0,
+	},
+	visible: custom => ({
+		opacity: 1,
+		transition: {delay: custom * 0.2},
+	}),
+}
+
+
 
 
 return (
-	<div className="works">
+	<motion.div 
+		initial="hidden"
+		whileInView="visible"
+		viewport={{ amount: 0.2, once: true }}
+		className="works">
 			<div className="section_header">
-				<h2>{t('works.our_works')}</h2>
+				<motion.h2 custom={2} variants={topAnimation}>{t('works.our_works')}</motion.h2>
 				<div className="section_header_sub"></div>
 			</div>
 			<>
 
 			<Slider {...settings}>
-				<div className='works_image'><img src={firstPictureOfWork} onClick={() => handleImageClick(firstPictureOfWork)} alt="firstPictureOfWork" /></div>
-				<div className='works_image'><img src={secondPictureOfWork} onClick={() => handleImageClick(secondPictureOfWork)} alt="secondPictureOfWork" /></div>
-				<div className='works_image'><img src={thirdPictureOfWork} onClick={() => handleImageClick(thirdPictureOfWork)} alt="thirdPictureOfWork" /></div>
-				<div className='works_image'><img src={fourthPictureOfWork} onClick={() => handleImageClick(fourthPictureOfWork)} alt="fourthPictureOfWork" /></div>
-				<div className='works_image'><img src={fivethPictureOfWork} onClick={() => handleImageClick(fivethPictureOfWork)} alt="fivethPictureOfWork" /></div>
-				<div className='works_image'><img src={sixthPictureOfWork} onClick={() => handleImageClick(sixthPictureOfWork)} alt="sixthPictureOfWork" /></div>
-				<div className='works_image'><img src={seventhPictureOfWork} onClick={() => handleImageClick(seventhPictureOfWork)} alt="seventhPictureOfWork" /></div>
-				<div className='works_image'><img src={eighthPictureOfWork} onClick={() => handleImageClick(eighthPictureOfWork)} alt="eighthPictureOfWork" /></div>
+				<motion.div whileTap={{ scale: 0.9 }} custom={2} variants={topAnimation} className='works_image'><img src={firstPictureOfWork} onClick={() => handleImageClick(firstPictureOfWork)} alt="firstPictureOfWork" /></motion.div>
+				<motion.div whileTap={{ scale: 0.9 }} custom={3} variants={topAnimation} className='works_image'><img src={secondPictureOfWork} onClick={() => handleImageClick(secondPictureOfWork)} alt="secondPictureOfWork" /></motion.div>
+				<motion.div whileTap={{ scale: 0.9 }} custom={4} variants={topAnimation} className='works_image'><img src={thirdPictureOfWork} onClick={() => handleImageClick(thirdPictureOfWork)} alt="thirdPictureOfWork" /></motion.div>
+				<motion.div whileTap={{ scale: 0.9 }} custom={5} variants={topAnimation} className='works_image'><img src={fourthPictureOfWork} onClick={() => handleImageClick(fourthPictureOfWork)} alt="fourthPictureOfWork" /></motion.div>
+				<motion.div whileTap={{ scale: 0.9 }} className='works_image'><img src={fivethPictureOfWork} onClick={() => handleImageClick(fivethPictureOfWork)} alt="fivethPictureOfWork" /></motion.div>
+				<motion.div whileTap={{ scale: 0.9 }} className='works_image'><img src={sixthPictureOfWork} onClick={() => handleImageClick(sixthPictureOfWork)} alt="sixthPictureOfWork" /></motion.div>
+				<motion.div whileTap={{ scale: 0.9 }} className='works_image'><img src={seventhPictureOfWork} onClick={() => handleImageClick(seventhPictureOfWork)} alt="seventhPictureOfWork" /></motion.div>
+				<motion.div whileTap={{ scale: 0.9 }} className='works_image'><img src={eighthPictureOfWork} onClick={() => handleImageClick(eighthPictureOfWork)} alt="eighthPictureOfWork" /></motion.div>
 			</Slider>
 			</>
 
 			{selectedImage && (
-				<div className={`overlay ${selectedImage ? 'show' : ''}`} onClick={() => setSelectedImage(null)}>
+				<motion.div initial="hidden"
+				whileInView="visible" 
+				variants={worksAnimation} className={`overlay ${selectedImage ? 'show' : ''}`} onClick={() => setSelectedImage(null)}>
 						<img src={selectedImage} alt="" className={`enlarged_image ${selectedImage ? 'show' : ''}`} />
-				</div>
+				</motion.div>
 			)}
-	</div>
+	</motion.div>
 )
 }
 

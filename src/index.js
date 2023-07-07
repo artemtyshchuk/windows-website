@@ -1,4 +1,4 @@
-import React, { Suspense } from 'react';              //Так должен выглядеть index.js
+import React, { Suspense } from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import App from './components/app/App';
@@ -9,12 +9,12 @@ import './i18n';
 
 
 ReactDOM.render(
-  <Suspense fallback={<Spinner/>} >
-  <React.StrictMode>
-    <Provider store={store}>
-      <App />
-    </Provider>
-  </React.StrictMode>
-  </Suspense>,
-  document.getElementById('root')
+	<Suspense fallback={<Spinner/>} >
+	<React.StrictMode>
+		<Provider store={store}>
+			<App />
+		</Provider>
+	</React.StrictMode>
+	</Suspense>,
+	document.getElementById('root')
 );

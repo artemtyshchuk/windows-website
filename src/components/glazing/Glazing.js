@@ -1,4 +1,4 @@
-import { useState, useCallback, useRef, Suspense } from 'react';
+import { useState, useCallback, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useDispatch } from 'react-redux';
 import { motion } from 'framer-motion';
@@ -13,7 +13,6 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css"; // Импорт стилей для слайдера
 import "slick-carousel/slick/slick-theme.css"; // Импорт темы для слайдера
 
-import Spinner from '../spinner/Spinner';
 import './glazing.scss';
 import './mediaGlazing.scss';
 
@@ -23,14 +22,11 @@ import { openCalculator } from '../../features/calculator/calculatorSlice';
 
 
 const Glazing = () => {
-
-
-	
-
 	const [selectedData, setSelectedData] = useState({
 		cold: dataGlazing[0].wood[0].cold[0],
 		warm: dataGlazing[0].wood[0].warm[0],
 	});
+	
 	const [activeDiv, setActiveDiv] = useState(0);
 	const divRef = useRef(null);
 
@@ -121,7 +117,7 @@ const Glazing = () => {
 			className="glazing"
 			initial="hidden"
 			whileInView="visible"
-			viewport={{ amount: 0.1 }}>
+			viewport={{ amount: 0.1, once: true }}>
 			<div className="container">
 				<div className="section_header">
 					<motion.h2 custom={1} variants={topAnimation}>{t('glazing.glazing_balconies_and_loggias')}</motion.h2>
@@ -130,10 +126,11 @@ const Glazing = () => {
 				<motion.div
 					initial="hidden"
 					whileInView="visible"
-					viewport={{ amount: 0.2 }} 
+					viewport={{ amount: 0.2, once: true }} 
 					className="glazing_slider">
 				<Slider {...settings}>
 					<motion.div
+						whileTap={{ scale: 0.9 }}
 						custom={1} 
 						variants={lineAnimation}
 						className={`glazing_block${activeDiv === 0 ? '_active' : ''}`}
@@ -147,6 +144,7 @@ const Glazing = () => {
 				
 
 					<motion.div
+						whileTap={{ scale: 0.9 }}
 						custom={2} 
 						variants={lineAnimation}
 						className={`glazing_block${activeDiv === 1 ? '_active' : ''}`}
@@ -160,6 +158,7 @@ const Glazing = () => {
 					</motion.div>
 
 					<motion.div
+						whileTap={{ scale: 0.9 }}
 						custom={3} 
 						variants={lineAnimation}
 						className={`glazing_block${activeDiv === 2 ? '_active' : ''}`}
@@ -173,7 +172,8 @@ const Glazing = () => {
 					</motion.div>
 
 					<motion.div
-						custom={4} 
+						whileTap={{ scale: 0.9 }}
+						custom={2} 
 						variants={lineAnimation}
 						className={`glazing_block${activeDiv === 3 ? '_active' : ''}`}
 						onClick={(event) => handleClick(dataGlazing[0].french[0], event, 3)}
@@ -186,7 +186,8 @@ const Glazing = () => {
 					</motion.div>
 
 					<motion.div
-						custom={5} 
+						whileTap={{ scale: 0.9 }}
+						custom={1} 
 						variants={lineAnimation}
 						className={`glazing_block${activeDiv === 4 ? '_active' : ''}`}
 						onClick={(event) => handleClick(dataGlazing[0].rise[0], event, 4)}
@@ -200,8 +201,18 @@ const Glazing = () => {
 				</Slider>
 				</motion.div>
 
-				<div className="glazing_content">
-					<motion.div className="glazing_card" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1 }}>
+				<motion.div 
+					initial="hidden"
+					whileInView="visible"
+					viewport={{ amount: 0.2, once: true }} 
+					className="glazing_content">
+					<motion.div 
+						className="glazing_card" 
+						custom={2} 
+						variants={lineAnimation}
+						// initial={{ opacity: 0 }} 
+						// animate={{ opacity: 1 }} 
+						transition={{ duration: 1 }}>
 						<div className="glazing_card">
 							<div className="glazing_cold">
 								<h3>{t('glazing.cold')}</h3>
@@ -220,13 +231,17 @@ const Glazing = () => {
 									<br />
 									<span>{t('glazing.turnkey_installation')}</span>
 								</p>
-								<button className="button glazing_price_btn text-uppercase popup_calc_btn" onClick={() => dispatch(openCalculator())}>
+								<motion.button whileTap={{ scale: 0.9 }} className="button glazing_price_btn text-uppercase popup_calc_btn" onClick={() => dispatch(openCalculator())}>
 								{t('glazing.calculate_the_cost')}
-								</button>
+								</motion.button>
 							</div>
 						</div>
 					</motion.div>
-					<motion.div className="glazing_card" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1 }}>
+					<motion.div 
+						className="glazing_card" 
+						custom={3} 
+						variants={lineAnimation}
+						transition={{ duration: 1 }}>
 						<div className="glazing_card">
 							<div className="glazing_warm">
 								<h3>{t('glazing.warm')}</h3>
@@ -244,13 +259,13 @@ const Glazing = () => {
 									<br />
 									<span>{t('glazing.turnkey_installation')}</span>
 								</p>
-								<button className="button glazing_price_btn text-uppercase popup_calc_btn" onClick={() => dispatch(openCalculator())}>
+								<motion.button whileTap={{ scale: 0.9 }} className="button glazing_price_btn text-uppercase popup_calc_btn" onClick={() => dispatch(openCalculator())}>
 								{t('glazing.calculate_the_cost')}
-								</button>
+								</motion.button>
 							</div>
 						</div>
 					</motion.div>
-				</div>
+				</motion.div>
 			</div>
 		</motion.div>
 	);
