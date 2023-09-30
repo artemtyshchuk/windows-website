@@ -44,12 +44,10 @@ const Glazing = () => {
 		if (divRef.current) {
 			divRef.current.classList.remove('_active');
 		}
-
 		const currentElement = event.currentTarget;
 		currentElement.classList.add('_active');
 		divRef.current = currentElement;
 
-		console.log(1);
 	}, [setActiveDiv, setSelectedData]);
 
 	const settings = {
@@ -210,13 +208,10 @@ const Glazing = () => {
 						className="glazing_card" 
 						custom={2} 
 						variants={lineAnimation}
-						// initial={{ opacity: 0 }} 
-						// animate={{ opacity: 1 }} 
 						transition={{ duration: 1 }}>
 						<div className="glazing_card">
 							<div className="glazing_cold">
 								<h3>{t('glazing.cold')}</h3>
-								{/* <Suspense fallback={<Spinner/>} ></Suspense> */}
 								<img src={selectedData.cold.image} alt="coldImage"></img>
 								<ul>
 									<li>{t('glazing.structural_thickness')} {selectedData.cold.thickness}</li>
